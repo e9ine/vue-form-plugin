@@ -4,7 +4,7 @@
         <div class="form-element" v-if="displayMode === 'CREATE' || displayMode === 'EDIT'">
             <textarea :name="attrs.name || label" :id="attrs.id || label || property.name" :class="customClass" :required="required" :placeholder="placeholder" :disabled="disabled" :rows="rows || (property && property.textarea) || 3" v-model="clonedValue.value" @input="handler" class="form-control" v-bind="attrs"></textarea>
         </div>
-        <p class="form-control-static" v-else-if="displayMode === 'VIEW' && (property.filter || filter)">{{ $options.filters[filter || property.filter](clonedValue.value, ...$filterArgs) }}</p>
+        <p class="form-control-static" v-else-if="displayMode === 'VIEW' && (property.filter || filter)">{{ $options.filters[filter || property.filter](clonedValue.value, ...filterArgs) }}</p>
         <p class="form-control-static pre" v-text="clonedValue.value || '-'" v-else-if="displayMode === 'VIEW'"></p>
     </div>
 </template>

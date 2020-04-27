@@ -1,34 +1,72 @@
 <template>
     <div>
-        <label class="control-label" :for="$attrs.id || options.label || property.name" v-text="options.label || property.name" v-show="!options.hideLabel"></label>
+        <label class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
-            <flat-pickr v-model="formattedValue" :config="{ ...config, ...options.calendarConfig, ...property.calendarConfig }" class="form-control datepicker" :placeholder="options.placeholder || 'DD/MM/YYY'" ref="calendar"></flat-pickr>
+            <flat-pickr v-model="formattedValue" :config="{ ...config, ...calendarConfig, ...property.calendarConfig }" class="form-control datepicker" :placeholder="placeholder || 'DD/MM/YYY'" ref="calendar"></flat-pickr>
         </div>
-        <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value">{{ clonedValue.value | formatDate('DD/MM/YYYY') }}</p>
+        <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value && !filter">{{ clonedValue.value | formatDate('DD/MM/YYYY') }}</p>
+        <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value && filter">{{ $options.filters[filter || property.filter](clonedValue.value, ...filterArgs) }}</p>
         <p class="form-control-static" v-else>-</p>
     </div>
 </template>
 
 <script>
 import flatPickr from 'vue-flatpickr-component';
+import moment from 'moment/src/moment';
 export default {
     name: 'DateField',
     props: {
-        options: {
-            type: Object
-        },
         value: {
             type: [String, Date]
+        },
+        label: {
+            type: String
+        },
+        required: {
+            type: [String, Boolean]
+        },
+        placeholder: {
+            type: String
+        },
+        customClass: {
+            type: String
+        },
+        disabled: {
+            type: Boolean
         },
         displayMode: {
             type: String
         },
+        hideLabel: {
+            type: Boolean
+        },
+        filter: {
+            type: String
+        },
+        filterArgs: {
+            type: Array,
+            default: () => []
+        },
+        calendarConfig: {
+            type: Object
+        },
         property: {
+            type: Object
+        },
+        attrs: {
             type: Object
         }
     },
     components: {
         flatPickr
+    },
+    filters: {
+        formatDate(date, format) {
+            if (!format) {
+                format = 'DD/MM/YYYY HH:mm';
+            }
+            return date ? moment(date).format(format) : '';
+        }
     },
     data() {
         let vm = this;
@@ -52,7 +90,7 @@ export default {
         },
         validate() {
             if (this.property) {
-                if ((this.options.required || this.property.required) && !this.clonedValue.value) {
+                if ((this.required || this.property.required) && !this.clonedValue.value) {
                     this.clonedValue.$invalid = true;
                     this.clonedValue.$error = 'required';
                 } else {

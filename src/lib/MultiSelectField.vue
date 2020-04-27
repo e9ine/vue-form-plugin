@@ -1,12 +1,12 @@
 <template>
     <div>
-        <label class="control-label" :for="options.label || property.name" v-text="options.label || property.name" v-show="!options.hideLabel"></label>
+        <label class="control-label" :for="label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <br class="clearfix" />
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
-            <div v-if="options.multiple && typeof items[0] === 'object'" class="multiple">
+            <div v-if="multiple && typeof items[0] === 'object'" class="multiple">
                 <multiselect v-model="selected" :options="items" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @close="handler" @remove="remove">
                     <template slot="option" slot-scope="props">
-                        <Avatar :text="props.option.Name" :image-url="props.option[options.avatarProp]" size="30" class="mr8" v-if="options.showAvatar"></Avatar>
+                        <!-- Avatar -->
                         <div class="description">
                             <div class="title">
                                 {{ props.option.Name }}
@@ -27,42 +27,88 @@
 </template>
 
 <script>
-import Avatar from './Avatar';
 import Multiselect from 'vue-multiselect';
 export default {
     name: 'MultiSelectField',
     props: {
-        options: {
-            type: Object
-        },
         value: {
             type: [String, Array, Object]
+        },
+        label: {
+            type: String
+        },
+        required: {
+            type: [String, Boolean]
+        },
+        placeholder: {
+            type: String
+        },
+        customClass: {
+            type: String
+        },
+        disabled: {
+            type: Boolean
         },
         displayMode: {
             type: String
         },
-        property: {
-            type: Object
+        hideLabel: {
+            type: Boolean
+        },
+        filter: {
+            type: String
+        },
+        filterArgs: {
+            type: Array,
+            default: () => []
+        },
+        displayField: {
+            type: String
+        },
+        valueField: {
+            type: String
+        },
+        fullObject: {
+            type: Boolean
+        },
+        searchable: {
+            type: [Boolean, String]
+        },
+        multiple: {
+            type: [Boolean, String]
+        },
+        allowClear: {
+            type: Boolean
+        },
+        showAvatar: {
+            type: Boolean
+        },
+        avatarProp: {
+            type: String
+        },
+        optionTemplate: {
+            type: String
         },
         selectFrom: {
             type: [Object, Array]
+        },
+        property: {
+            type: Object
+        },
+        attrs: {
+            type: Object
         }
     },
     components: {
-        Multiselect,
-        Avatar
+        Multiselect
     },
     data() {
         return {
             clonedValue: {},
-            displayField: '',
             selected: []
         };
     },
     methods: {
-        addTag(newTag) {
-            this.clonedValue.value.push(newTag);
-        },
         remove() {
             this.$nextTick(() => {
                 this.handler();
@@ -70,10 +116,10 @@ export default {
         },
         handler() {
             let clonedValue = { ...this.clonedValue };
-            if (this.options.fullObject) {
+            if (this.fullObject) {
                 clonedValue.value = this.selected;
             } else {
-                clonedValue.value = this.selected.map(item => item[this.options.valueField || '_id']);
+                clonedValue.value = this.selected.map(item => item[this.valueField || '_id']);
             }
             this.clonedValue = clonedValue;
             this.validate();
@@ -100,8 +146,8 @@ export default {
         },
         displayFromObject() {
             let result;
-            if (this.selectFrom.length && !this.options.fullObject) {
-                result = this.selectFrom.filter(item => item[this.options.valueField || '_id'] === this.clonedValue.value);
+            if (this.selectFrom.length && !this.fullObject) {
+                result = this.selectFrom.filter(item => item[this.valueField || '_id'] === this.clonedValue.value);
                 return result.map(item => item[this.displayField || 'Name']).join(',');
             }
             return '';
@@ -118,13 +164,12 @@ export default {
         }
     },
     created() {
-        this.displayField = this.options.displayField;
         if (this.selectFrom && this.selectFrom.length && typeof this.selectFrom[0] === 'object') {
             // check if any external objects exist in the list  via select from
             if (this.value) {
-                this.selected = this.selectFrom.filter(item => item[this.options.valueField || '_id'] === this.value);
+                this.selected = this.selectFrom.filter(item => item[this.valueField || '_id'] === this.value);
             } else if (this.property && this.property.value) {
-                this.selected = this.selectFrom.filter(item => this.property.value.indexOf(item[this.options.valueField || '_id']) > -1);
+                this.selected = this.selectFrom.filter(item => this.property.value.indexOf(item[this.valueField || '_id']) > -1);
             } else {
                 this.selected = [];
             }
@@ -142,5 +187,4 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped></style>

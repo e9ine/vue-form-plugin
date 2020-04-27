@@ -16,6 +16,7 @@
 			border-radius: 50%;
 			box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
 			top: 8px;
+			height: auto;
 			svg {
 				display: block;
 				margin: 0 auto;
@@ -65,45 +66,6 @@
 				width: 0;
 				height: 0;
 				margin-bottom: 0;
-			}
-		}
-	}
-	.shimmer-item {
-		min-height: 330px;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		border-radius: 10px;
-		.animated-background {
-			animation-duration: 1s;
-			animation-fill-mode: forwards;
-			animation-iteration-count: infinite;
-			animation-name: placeHolderShimmer;
-			animation-timing-function: linear;
-			background: #f6f7f8;
-			background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-			background-size: 800px 104px;
-			height: 100%;
-			position: relative;
-			border-radius: 10px;
-			z-index: 100;
-			&.calendar-box {
-				height: 38px;
-				width: 40px;
-				margin: 4px 2px;
-				border-radius: 10px;
-				display: inline-block;
-			}
-			&.calendar-box-title {
-				height: 30px;
-				width: 170px;
-				border-radius: 0;
-				text-align: center;
-				margin-top: 16px;
-				margin-bottom: 32px;
-				margin-left: 40px;
 			}
 		}
 	}
