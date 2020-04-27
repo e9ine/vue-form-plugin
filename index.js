@@ -1,0 +1,1 @@
+// Install function for plugin

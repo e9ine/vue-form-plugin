@@ -1,0 +1,83 @@
+.multiple {
+  .multiselect {
+    &__select {
+      &:before {
+        top: 70%;
+      }
+    }
+    &__tags {
+      min-height: auto;
+      max-height: 100px;
+      padding-top: 6px;
+      overflow:scroll;
+      border-color: $form-border-color;
+    }
+    &__tag {
+      background: $form-primary;
+      &-icon {
+        &:hover {
+            background: mix(#000, $form-primary, 10%);
+        }
+        &:after {
+            color: #ddd;
+        }
+      }
+    }
+  }
+}
+.single {
+  .multiselect {
+    &--disabled {
+      .multiselect__select {
+        background: transparent !important;
+      }
+    }
+    &__input {
+      width: auto !important;
+      min-height: 22px;
+      line-height: 22px;
+    }
+    &__tags {
+      border-color: $form-border-color;
+    }
+  }
+}
+.multiselect {
+  &__content-wrapper {
+    //max-height: 200px !important;
+    min-height: auto;
+  }
+  &__option{
+    background: none;
+    color: $form-light-grey;
+    display: flex;
+    align-items: center;
+    &:hover {
+      background-color: $form-lighter-grey
+    }
+    .image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-block;
+      background-size: cover;
+      margin-right: 16px;
+      background-position: center center;
+    }
+    .description {
+      display: inline-block;
+      .title {
+        font-size: 14px;
+        color: $form-light-grey;
+      }
+      small {
+        font-size: 12px;
+      }
+    }
+    &--selected.multiselect__option--highlight {
+      height: 100%;
+      color: $form-primary;
+      background: none;
+    }
+  }
+}

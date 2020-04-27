@@ -1,0 +1,345 @@
+input[type="text"],
+input[type="email"],
+textarea,
+select,
+input[type="password"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: $form-white;
+	&::placeholder {
+		color: $form-light-grey !important;
+	}
+}
+input[type="number"] {
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
+
+.form-group {
+	margin-bottom: 16px;
+	line-height: 19px;
+	position: relative;
+	box-sizing: content-box;
+	label {
+		width: auto;
+		display: block;
+		color: rgba(100, 100, 100, 0.5);
+		font-size: 16px;
+		margin-bottom: 8px;
+		text-align: left;
+	}
+	.allowclear {
+		float:right;
+		margin-top: -24px;
+		i {
+			font-size: 20px;
+			color: $form-error;
+			cursor: pointer;
+		}
+	}
+	.form-control {
+		width: 100%;
+		border-radius: 5px;
+		background: $form-white;
+		box-shadow: none;
+		height: 34px;
+		padding: 4px 12px;
+		font-size: 14px;
+		line-height: 1.42857143;
+		color: #555;
+		background-color: #fff;
+		background-image: none;
+		border: 1px solid $form-border-color;
+		-webkit-appearance: none;
+		&:focus {
+			outline: none;
+		}
+		&::-webkit-input-placeholder {
+			/* Chrome/Opera/Safari */
+			text-transform: capitalize;
+			color: lighten($form-body-text, 15%);
+			font-weight: 400;
+		}
+		&::-moz-placeholder {
+			/* Firefox 19+ */
+			color: lighten($form-body-text, 15%);
+			text-transform: capitalize;
+			font-weight: 400;
+		}
+		&:-ms-input-placeholder {
+			/* IE 10+ */
+			color: lighten($form-body-text, 15%);
+			text-transform: capitalize;
+			font-weight: 400;
+		}
+		&:-moz-placeholder {
+			/* Firefox 18- */
+			color: lighten($form-body-text, 15%);
+			text-transform: capitalize;
+			font-weight: 400;
+		}
+		&.no-border {
+			border: none;
+		}
+		&.datepicker {
+			background-image: url('../assets/images/datepicker.svg');
+			background-repeat: no-repeat;
+			background-size: 26px;
+			background-position: right 14px center;
+		}
+		&:disabled {
+			background-color: $form-dirty-white;
+			cursor: not-allowed;
+		}
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
+	.form-control-static {
+		font-weight: 600;
+		font-size: 16px;
+		min-height: 32px;
+		&.pre {
+			white-space: pre-wrap;
+		}
+	}
+	textarea {
+		width: 100%;
+		height: auto !important;
+		resize: none;
+	}
+	select {
+		padding-top: 8px !important;
+		padding-bottom: 8px !important;
+		width: 100%;
+		border-radius: 6px;
+		background-color: $form-white;
+		border: none;
+		font-size: 16px;
+		cursor: pointer;
+		color: lighten($form-body-text, 15%);
+		font-weight: 400;
+		background-image: url('../assets/images/select.png');
+		background-repeat: no-repeat;
+		background-size: 16px;
+		background-position: right 13px center;
+		box-shadow: none;
+		-webkit-appearance: none;
+		&:focus {
+			outline: none;
+		}
+	}
+	.validation-message {
+		margin-top: 8px;
+		color: $form-light-grey;
+	}
+	.vue-tel-input {
+		width: 100%;
+		&:focus-within {
+			box-shadow: none;
+			border-color: #e0e7ff;
+		}
+		.vti__dropdown-list,.vti__dropdown {
+			&:focus {
+				outline: 0 !important;
+			}
+		}
+		.vti__input {
+			background-color: $form-white !important;
+		}
+	}
+	.intellisense {
+		display: none;
+		&.visible {
+			z-index: 1;
+			position: absolute;
+			font-size: 1rem;
+			top: 11px;
+			left: 13px;
+			display: block;
+			background: transparent;
+			width: inherit;
+			padding-left: 0;
+			color: $form-light-grey;
+		}
+	}
+	.intellisense-help {
+		position: absolute;
+		right: 8px;
+		top: 11px;
+		color: $form-primary;
+		z-index: 0;
+		display: flex;
+		align-items: center;
+		i {
+			font-size: 16px;
+			margin-right: 4px;
+		}
+	}
+}
+input[type="file"] {
+    width: 100%;
+    outline: 0 !important;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    height: 36px;
+    &::-webkit-file-upload-button {
+        visibility: hidden !important;
+        -webkit-appearance: none;
+    }
+    &::before {
+        content: 'Choose File';
+        display: inline-block;
+        background-color: $form-primary;
+        border-radius: 6px;
+        line-height: 36px;
+        height: 36px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 13px;
+        outline: 0 !important;
+		padding: 0 12px;
+    }
+    &:hover {
+        &::before {
+            border-color: black;
+        }
+    }
+}
+
+.form-horizontal {
+	.left-border {
+		border-left: 4px solid transparentize(#f4f6fb, 0.2);
+		border-radius: 2px;
+		@media (max-width: 767px) {
+			border-left: none;
+		}
+	}
+	.form-group-view {
+		.form-group {
+			&:nth-child(2n) {
+				background-color: mix(#fff, $form-lighter-grey,10%);
+			}
+			margin-bottom: 0 !important;
+			margin-right: 8px;
+			margin-left: -8px;
+			>div {
+				padding: 4px 4px 4px 8px;
+			}
+			.form-control-static {
+				padding-right: 8px;
+			}
+		}
+	}
+	.form-group {
+		margin-bottom: 16px;
+		&.material {
+			label {
+				display: inline-block;
+			}
+		}
+		> div {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			&:after{
+				content: "";
+				clear: both;
+				display: table;
+			}
+		}
+		label {
+			float: left;
+			width: 30%;
+			margin-bottom: 0;
+		}
+		.form-element {
+			float: left;
+			position: relative;
+			width: 70%;
+			&:after {
+				clear: both;
+			}
+			.form-control {
+				text-align: left;
+			}
+		}
+		.validation-message {
+			margin-left: 30%;
+			width: 70%;
+			top: 4px;
+		}
+		.form-control-static {
+			float: left;
+			width: 70%;
+			min-height: 40px;
+			margin-bottom: 0;
+			text-align: right;
+			line-height: 40px;
+		}
+		input[type="number"] {
+			text-align: right !important;
+		}
+		.multiselect {
+			&__single,&__option {
+				text-align: left;
+			}
+
+		}
+	}
+	.checkbox {
+		.form-element {
+			.check-label {
+				float: right;
+			}
+		}
+	}
+	.clearfix {
+		display: none;
+	}
+}
+@media print {
+	body * {
+		visibility: hidden;
+		.content-wrapper {
+			overflow-x: visible !important;
+			overflow-y: visible !important;
+			margin-left: 0 !important;
+			margin-top: 0 !important;
+		}
+	}
+	#app {
+		overflow: visible !important;
+	}
+	#pdf-report,
+	#pdf-report * {
+		visibility: visible;
+		-webkit-print-color-adjust: exact;
+	}
+	#pdf-report {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		.print-info {
+			display: block !important;
+			margin-bottom: 16px;
+		}
+		i {
+			display: none;
+		}
+		.category {
+			margin-bottom: 16px;
+		}
+	}
+}
