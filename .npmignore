@@ -1,0 +1,10 @@
+node_modules
+.idea
+scripts
+public
+babel.config.js
+vue.config.js
+src/models
+App.vue
+main.js
+.gitignore

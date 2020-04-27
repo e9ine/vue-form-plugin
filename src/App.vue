@@ -7,10 +7,15 @@
         <FieldFor type="Phone" :value.sync="phone" label="Phone" display-mode="EDIT"></FieldFor>
         <FieldFor type="Select" :value.sync="gender" :select-from="genders" label="Gender" display-mode="EDIT"></FieldFor>
         <FieldFor type="Date" :value.sync="birthDate" label="Birth Date" display-mode="EDIT"></FieldFor>
+        <FormFor :data="address" :model="Address" display-mode="EDIT">
+            <FieldFor field="Line1"></FieldFor>
+            <FieldFor field="Line2"></FieldFor>
+        </FormFor>
     </div>
 </template>
 
 <script>
+import Address from './models/Address';
 export default {
     name: 'App',
     data() {
@@ -22,7 +27,9 @@ export default {
             phone: undefined,
             gender: 'Male',
             genders: ['Male', 'Female'],
-            birthDate: new Date()
+            birthDate: new Date(),
+            address: new Address(),
+            Address
         };
     }
 };

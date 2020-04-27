@@ -1,51 +1,56 @@
 # vue-form-plugin
-
-## Project setup
+[https://components9.firebaseapp.com/vue2/models/](https://components9.firebaseapp.com/vue2/models/)
+## Installation
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm install --save @e9ine/vue-form-plugin 
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Usage
 
-### Run your tests
-```
-npm run test
-```
+1. For full usage, you can use the plugin without passing any options like below :
 
-### Lints and fixes files
-```
-npm run lint
+```vue
+    import Vue from 'vue';
+    import VueFormPlugin from '@e9ine/vue-form-plugin';
+    Vue.use(VueFormPlugin);
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+2. You can also pass options in case you don't want to use a parent Form Wrapper `<FormFor>` or `<SubFormFor>`.
 
-### Commit Guidelines
-
-Keep first keyword as one of the below ```(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|chore|types|wip)```
-
-example :
-
-```angular2
-fix(login): issue fixed related to login
+```vue
+    import Vue from 'vue';
+    import VueFormPlugin from '@e9ine/vue-form-plugin';
+    Vue.use(VueFormPlugin, {
+        formFor: false,
+        subFormFor: false
+    });
 ```
 
-```angular2
-chore: updated the code in babel.config.js
+3. Tree shaking individual component import : You can individually import the components locally within your components.
+```vue
+    import FieldFor from '@e9ine/vue-form-plugin/src/lib/FieldFor';
 ```
 
-```angular2
-feat: new feature added for changing the user password changes
+## Examples
+
+There are two ways to build forms with this plugin.
+
+1. Custom Usage with only FieldFor: 
+- type, value, label and displayMode props are required for this form scheme.
+- This is a minimal setup required to display fields within forms. For error mechanism, you will have to handle it externally through computed properties.
+```vue
+    <FieldFor type="Text" :value.sync="name" label="Name" display-mode="EDIT"></FieldFor>
 ```
 
-```angular2
-docs: documentation updated for the project
+2. Using FormFor
+- This way is a more recommended way to use forms since it additionally gives you features to check if form is valid or not, error mechanism etc.
+- <FormFor> component acts as a parent to all its <FieldFor> children and tracks the incoming and outgoing data by processing the events.
+- Technically you have to pass the schema of the form and rest is taken care by the plugin. An Example is available below. 
+```vue
+    <FormFor :data="address" :model="Address" display-mode="EDIT">
+        <FieldFor field="Line1"></FieldFor>
+        <FieldFor field="Line2"></FieldFor>
+    </FormFor>
 ```
+- Full documentation is available [here](https://components9.firebaseapp.com/vue2/models/)
+
