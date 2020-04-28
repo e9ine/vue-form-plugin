@@ -12,7 +12,7 @@
 
 <script>
 import flatPickr from 'vue-flatpickr-component';
-import moment from 'moment/src/moment';
+import moment from 'moment';
 export default {
     name: 'DateField',
     props: {

@@ -7,6 +7,7 @@
         <FieldFor type="Phone" :value.sync="phone" label="Phone" display-mode="EDIT"></FieldFor>
         <FieldFor type="Select" :value.sync="gender" :select-from="genders" label="Gender" display-mode="EDIT"></FieldFor>
         <FieldFor type="Date" :value.sync="birthDate" label="Birth Date" display-mode="EDIT"></FieldFor>
+        <FieldFor type="Select" :value.sync="vitamin" label="Vitamin" display-mode="EDIT" :select-from="vitamins" :show-avatar="true" avatar-prop="ImageUrl"></FieldFor>
         <FormFor :data="address" :model="Address" display-mode="EDIT">
             <FieldFor field="Line1"></FieldFor>
             <FieldFor field="Line2"></FieldFor>
@@ -29,8 +30,20 @@ export default {
             genders: ['Male', 'Female'],
             birthDate: new Date(),
             address: new Address(),
-            Address
+            vitamins: [
+                {
+                    _id: '2',
+                    Name: 'Mango',
+                    Description: 'A mango is a juicy stone fruit produced from numerous species of tropical trees.',
+                    Vitamin: 'C',
+                    ImageUrl: 'https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-mango.jpg'
+                }
+            ],
+            vitamin: ''
         };
+    },
+    created() {
+        this.Address = Address;
     }
 };
 </script>

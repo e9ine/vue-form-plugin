@@ -12,7 +12,7 @@
                             <v-runtime-template :template="optionTemplate" :template-props="{ props }"></v-runtime-template>
                         </div>
                         <div v-else class="d-flex align-items-center">
-                            <!-- Add a profile as avatar -->
+                            <div class="profile" v-if="showAvatar" :style="{ 'background-image': 'url(' + props.option[avatarProp] + ')' }"></div>
                             <div class="description">
                                 <div class="title">
                                     {{ props.option.Name }}
@@ -208,3 +208,13 @@ export default {
     }
 };
 </script>
+<style lang="scss" scoped>
+.profile {
+    display: inline-block;
+    background-size: cover;
+    margin-right: 8px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+</style>

@@ -11,7 +11,7 @@
         </div>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value === undefined">-</p>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW' && (property.filter || filter)">
-            {{ $options.filters[filter || property.filter](clonedValue.value, ...$options.filterArgs) }}
+            {{ $options.filters[filter || property.filter](clonedValue.value, ...filterArgs) }}
         </p>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW'" v-text="clonedValue.value"></p>
     </div>

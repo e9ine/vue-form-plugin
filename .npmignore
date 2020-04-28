@@ -8,3 +8,4 @@ src/models
 App.vue
 main.js
 .gitignore
+tests
