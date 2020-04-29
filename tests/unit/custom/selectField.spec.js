@@ -322,7 +322,7 @@ describe('SelectField.vue', () => {
         await Vue.nextTick();
         const avatarElements = wrapper.find(VueMultiSelect).findAll('.profile');
         expect(avatarElements).toHaveLength(3);
-        expect(avatarElements.at(1).element.style.backgroundImage).toBe(`url(${selectFromOptions[1].ImageUrl})`);
+        expect(avatarElements.at(1).attributes('src')).toBe(selectFromOptions[1].ImageUrl);
         wrapper.destroy();
     });
 
