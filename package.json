@@ -1,6 +1,6 @@
 {
   "name": "@e9ine/vue-form-plugin",
-  "version": "0.0.1d",
+  "version": "0.0.1e",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
