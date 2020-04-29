@@ -140,21 +140,7 @@ export default {
                         error: valueObj.$error
                     });
                 }
-
-                // Check for subFormFor
-                if (this.$parent.$parent && this.$parent.$parent.errors) {
-                    let found = this.$parent.$parent.errors.findIndex(err => err.name === this.property.name);
-                    if (found > -1) {
-                        this.$parent.$parent.errors.splice(found, 1);
-                    }
-                    if (this.invalid) {
-                        this.$parent.$parent.errors.push({
-                            name: this.property.name,
-                            error: valueObj.$error
-                        });
-                    }
-                    this.$parent.$parent.invalid = this.$parent.$parent.errors.length !== 0;
-                } else this.$parent.invalid = this.$parent.errors.length !== 0;
+                this.$parent.invalid = this.$parent.errors.length !== 0;
 
                 // emit the changes
                 this.$emit('changed', this.property.value);

@@ -1,5 +1,8 @@
 # vue-form-plugin
 [https://components9.firebaseapp.com/vue2/models/](https://components9.firebaseapp.com/vue2/models/)
+
+[![Build Status](https://travis-ci.org/sharvilak11/vue-form-plugin.svg?branch=master)](https://travis-ci.org/sharvilak11/vue-form-plugin)
+
 ## Installation
 ```
 npm install --save @e9ine/vue-form-plugin 
@@ -15,14 +18,13 @@ npm install --save @e9ine/vue-form-plugin
     Vue.use(VueFormPlugin);
 ```
 
-2. You can also pass options in case you don't want to use a parent Form Wrapper `<FormFor>` or `<SubFormFor>`.
+2. You can also pass options in case you don't want to use a parent Form Wrapper `<FormFor>`.
 
 ```vue
     import Vue from 'vue';
     import VueFormPlugin from '@e9ine/vue-form-plugin';
     Vue.use(VueFormPlugin, {
-        formFor: false,
-        subFormFor: false
+        formFor: false
     });
 ```
 

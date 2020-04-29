@@ -1,3 +1,5 @@
+import Location from './Location';
+
 const _schema = {
     Line1: {
         type: String
@@ -21,7 +23,7 @@ const _schema = {
         type: String,
         default: 'United Kingdom'
     },
-    Location: {}
+    Location: Location
 };
 
 export default class Address {

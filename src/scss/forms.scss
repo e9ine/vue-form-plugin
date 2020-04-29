@@ -28,7 +28,7 @@ input[type="number"] {
 	label {
 		width: auto;
 		display: block;
-		color: rgba(100, 100, 100, 0.5);
+		color: $form-light-grey;
 		font-size: 16px;
 		margin-bottom: 8px;
 		text-align: left;
@@ -139,6 +139,7 @@ input[type="number"] {
 	.validation-message {
 		margin-top: 8px;
 		color: $form-light-grey;
+		text-align: left;
 	}
 	.vue-tel-input {
 		width: 100%;

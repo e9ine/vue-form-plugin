@@ -83,7 +83,7 @@ export default {
         },
         validate() {
             if (this.property) {
-                if ((this.required || this.property.required) && this.clonedValue.value === undefined) {
+                if ((this.required || this.property.required) && !this.clonedValue.value && this.clonedValue.value !== 0) {
                     this.clonedValue.$invalid = true;
                     this.clonedValue.$error = 'required';
                 } else if (this.min !== undefined && this.clonedValue.value < this.min) {
