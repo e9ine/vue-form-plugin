@@ -2,6 +2,7 @@
 [https://components9.firebaseapp.com/vue2/models/](https://components9.firebaseapp.com/vue2/models/)
 
 [![Build Status](https://travis-ci.org/sharvilak11/vue-form-plugin.svg?branch=master)](https://travis-ci.org/sharvilak11/vue-form-plugin)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e3f2cb11-e545-4955-bde2-b2601ea51a40/deploy-status)](https://app.netlify.com/sites/vue9-form-plugin/deploys)
 
 ## Installation
 ```
