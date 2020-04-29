@@ -47,7 +47,7 @@ There are two ways to build forms with this plugin.
 - <FormFor> component acts as a parent to all its <FieldFor> children and tracks the incoming and outgoing data by processing the events.
 - Technically you have to pass the schema of the form and rest is taken care by the plugin. An Example is available below. 
 ```vue
-    <FormFor :data="address" :model="Address" display-mode="EDIT">
+    <FormFor :data="address" display-mode="EDIT">
         <FieldFor field="Line1"></FieldFor>
         <FieldFor field="Line2"></FieldFor>
     </FormFor>
