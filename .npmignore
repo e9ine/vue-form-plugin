@@ -9,3 +9,4 @@ App.vue
 main.js
 .gitignore
 tests
+jest.config.js

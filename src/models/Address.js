@@ -31,7 +31,7 @@ export default class Address {
             this._Summary = this.getAddressSummary();
         }
     }
-    static schema() {
+    schema() {
         return _schema;
     }
     getAddressSummary() {

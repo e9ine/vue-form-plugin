@@ -8,7 +8,7 @@
             </div>
             <div class="intellisense-help" v-if="showSuggestion && filteredSuggestion"><i class="material-icons">keyboard_tab</i>{{ filteredSuggestion ? 'Press Tab to Select' : '' }}</div>
         </div>
-        <p class="form-control-static" v-else-if="(displayMode === 'VIEW' && property.filter) || filter">{{ $options.filters[filter || property.filter](clonedValue.value, ...filterArgs) }}</p>
+        <p class="form-control-static" v-else-if="(displayMode === 'VIEW' && property.filter) || filter">{{ $options.filters[filter || property.filter](clonedValue.value, ...(filterArgs || property.filterArgs)) }}</p>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW'" v-text="clonedValue.value || '-'"></p>
     </div>
 </template>
@@ -52,6 +52,9 @@ export default {
         },
         suggestions: {
             type: Array
+        },
+        regex: {
+            type: String
         },
         property: {
             type: Object
@@ -100,7 +103,10 @@ export default {
                 } else if (this.property.email && !/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(this.clonedValue.value)) {
                     this.clonedValue.$invalid = true;
                     this.clonedValue.$error = 'email';
-                } else if (this.property.regex && !this.property.regex.test(this.clonedValue.value)) {
+                } else if (this.property.regex && !this.clonedValue.value.test(this.property.regex)) {
+                    this.clonedValue.$invalid = true;
+                    this.clonedValue.$error = 'regex';
+                } else if (this.regex && !this.clonedValue.value.test(this.regex)) {
                     this.clonedValue.$invalid = true;
                     this.clonedValue.$error = 'regex';
                 } else if (this.property.maxlength && (!this.clonedValue.value || this.clonedValue.value > this.property.maxlength)) {

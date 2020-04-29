@@ -36,7 +36,8 @@ export default {
             type: Boolean
         },
         showFlags: {
-            type: Boolean
+            type: Boolean,
+            default: true
         },
         property: {
             type: Object

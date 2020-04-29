@@ -5,7 +5,7 @@
             <flat-pickr v-model="formattedValue" :config="{ ...config, ...calendarConfig, ...property.calendarConfig }" class="form-control datepicker" :placeholder="placeholder || 'DD/MM/YYY'" ref="calendar"></flat-pickr>
         </div>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value && !filter">{{ clonedValue.value | formatDate('DD/MM/YYYY') }}</p>
-        <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value && filter">{{ $options.filters[filter || property.filter](clonedValue.value, ...filterArgs) }}</p>
+        <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value && filter">{{ $options.filters[filter || property.filter](clonedValue.value, ...(filterArgs || property.filterArgs)) }}</p>
         <p class="form-control-static" v-else>-</p>
     </div>
 </template>
@@ -107,10 +107,3 @@ export default {
     }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-.form-control {
-    background-color: #fff !important;
-}
-</style>

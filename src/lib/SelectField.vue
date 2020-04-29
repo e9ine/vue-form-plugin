@@ -33,10 +33,10 @@
             </div>
         </div>
         <p class="form-control-static" v-else-if="items && displayMode === 'VIEW' && typeof items[0] === 'string' && (property.filter || filter)">
-            {{ $options.filters[filter || property.filter](clonedValue.value, ...filterArgs) || '-' }}
+            {{ $options.filters[filter || property.filter](clonedValue.value, ...(filterArgs || property.filterArgs)) || '-' }}
         </p>
         <p class="form-control-static" v-else-if="items && displayMode === 'VIEW' && typeof items[0] === 'object' && (property.filter || filter)">
-            {{ $options.filters[filter || property.filter](displayFromObject, ...filterArgs) || '-' }}
+            {{ $options.filters[filter || property.filter](displayFromObject, ...(filterArgs || property.filterArgs)) || '-' }}
         </p>
         <p class="form-control-static" v-else-if="items && displayMode === 'VIEW' && typeof items[0] === 'object'">
             {{ displayFromObject || '-' }}

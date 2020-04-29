@@ -1,0 +1,89 @@
+.check {
+  display: none;
+  box-sizing: border-box;
+
+  &:after, &:before {
+    box-sizing: border-box;
+  }
+
+  * {
+    box-sizing: border-box;
+
+    &:after, &:before {
+      box-sizing: border-box;
+    }
+  }
+
+  + label.check-label {
+    box-sizing: border-box;
+  }
+
+  &::selection, &:after::selection, &:before::selection {
+    background: none;
+  }
+
+  * {
+    &::selection, &:after::selection, &:before::selection {
+      background: none;
+    }
+  }
+
+  + label.check-label {
+    &::selection {
+      background: none;
+    }
+
+    outline: 0;
+    display: block;
+    margin-top: 5px;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    text-align: left;
+
+    &:after, &:before {
+      position: relative;
+      display: block;
+      content: '';
+      width: 50%;
+      height: 100%;
+    }
+
+    &:after {
+      left: 0;
+    }
+
+    &:before {
+      display: none;
+    }
+  }
+
+  &:checked {
+    + label.check-label:after {
+      left: 50%;
+    }
+
+    + label.check-label {
+      background: $form-primary;
+    }
+  }
+
+  + label.check-label {
+    background: $form-light-grey;
+    border-radius: 2em;
+    padding: 2px;
+    transition: all 0.4s ease;
+
+    &:after {
+      border-radius: 50%;
+      background: #fff;
+      transition: all 0.2s ease;
+    }
+  }
+
+  &:disabled + label {
+    opacity: 0.6 !important;
+  }
+}

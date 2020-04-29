@@ -47,6 +47,9 @@ export default {
             type: Array,
             default: () => []
         },
+        regex: {
+            type: String
+        },
         showSuggestion: {
             type: Boolean,
             default: false
@@ -104,8 +107,7 @@ export default {
             type: Boolean
         },
         showFlags: {
-            type: Boolean,
-            default: true
+            type: Boolean
         },
         // date
         calendarConfig: {

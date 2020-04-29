@@ -8,7 +8,7 @@
         <FieldFor type="Select" :value.sync="gender" :select-from="genders" label="Gender" display-mode="EDIT"></FieldFor>
         <FieldFor type="Date" :value.sync="birthDate" label="Birth Date" display-mode="EDIT"></FieldFor>
         <FieldFor type="Select" :value.sync="vitamin" label="Vitamin" display-mode="EDIT" :select-from="vitamins" :show-avatar="true" avatar-prop="ImageUrl"></FieldFor>
-        <FormFor :data="address" :model="Address" display-mode="EDIT">
+        <FormFor :data="address" display-mode="EDIT">
             <FieldFor field="Line1"></FieldFor>
             <FieldFor field="Line2"></FieldFor>
         </FormFor>
@@ -41,9 +41,6 @@ export default {
             ],
             vitamin: ''
         };
-    },
-    created() {
-        this.Address = Address;
     }
 };
 </script>
