@@ -84,19 +84,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-.vue-tel-input {
-    padding: 0 !important;
-    .vti {
-        &__dropdown {
-            &:hover {
-                background-color: transparent !important;
-            }
-        }
-        &__input {
-            background-color: $form-lighter-grey;
-        }
-    }
-}
-</style>

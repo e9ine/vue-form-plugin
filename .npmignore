@@ -10,3 +10,5 @@ main.js
 .gitignore
 tests
 jest.config.js
+.travis.yml
+build
