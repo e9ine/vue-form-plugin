@@ -3,7 +3,7 @@ import './scss/style.scss';
 import FieldFor from './lib/FieldFor.vue';
 import FormFor from './lib/FormFor.vue';
 
-function install(Vue, options = { formFor: true }) {
+export function install(Vue, options = { formFor: true }) {
     if (install.installed) return;
     install.installed = true;
     Vue.component(FieldFor.name, FieldFor);
@@ -11,6 +11,8 @@ function install(Vue, options = { formFor: true }) {
         Vue.component(FormFor.name, FormFor);
     }
 }
+
+export { FieldFor, FormFor };
 
 const plugin = {
     install
@@ -28,4 +30,3 @@ if (GlobalVue) {
 }
 
 export default plugin;
-export { FieldFor, FormFor };

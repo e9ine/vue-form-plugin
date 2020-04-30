@@ -34,7 +34,16 @@ Vue.use(VueFormPlugin, {
 import { FieldFor } from '@e9ine/vue-form-plugin';
 ```
 
-Include CSS/SCSS in your style.scss.
+### SFC Usage
+
+Manually include SFC components
+
+```js
+import FormFor from '@e9ine/vue-form-plugin/src/lib/FormFor';
+import FieldFor from '@e9ine/vue-form-plugin/src/lib/FieldFor';
+```
+
+Manually include CSS/SCSS in your style.scss.
 
 ```scss
 @import '~@e9ine/vue-form-plugin/src/scss/style.scss'
