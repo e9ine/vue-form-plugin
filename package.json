@@ -1,6 +1,6 @@
 {
   "name": "@e9ine/vue-form-plugin",
-  "version": "0.0.1h",
+  "version": "0.0.1i",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "demo": "vue-cli-service build",
@@ -12,6 +12,13 @@
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.es.js",
     "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.umd.js"
   },
+  "files": [
+    "src/assets",
+    "src/lib",
+    "src/scss",
+    "src/index.js",
+    "dist"
+  ],
   "main": "dist/vue-form-plugin.umd.js",
   "module": "dist/vue-form-plugin.esm.js",
   "unpkg": "dist/vue-form-plugin.min.js",
