@@ -110,7 +110,7 @@
     "commit-msg": "node scripts/verifyCommit.js"
   },
   "lint-staged": {
-    "*.js": [
+    "*.js,!dist/*.js": [
       "prettier --write",
       "vue-cli-service lint",
       "git add"
