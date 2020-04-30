@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import FieldFor from '@/lib/FieldFor';
 import Vue from 'vue';
 
@@ -8,7 +8,7 @@ describe('NumberField.vue', () => {
         wrapper.destroy();
     });
     it('should display number input in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 5,
                 displayMode: 'EDIT',
@@ -20,7 +20,7 @@ describe('NumberField.vue', () => {
     });
 
     it('should show the correct value after edit', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 20,
                 type: 'Number',
@@ -34,7 +34,7 @@ describe('NumberField.vue', () => {
     });
 
     it('should show the p tag with relevant value in view mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 50,
                 type: 'Number',
@@ -47,7 +47,7 @@ describe('NumberField.vue', () => {
     });
 
     it('should show the placeholder when placeholder is passed as a prop in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 0,
                 placeholder: 'Start typing here...',
@@ -60,7 +60,7 @@ describe('NumberField.vue', () => {
     });
 
     it('should show the label with correct value when label prop is passed', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 40,
                 label: 'Cost',
@@ -74,7 +74,7 @@ describe('NumberField.vue', () => {
     });
 
     it('should hide the label when hide-label prop is set', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 0,
                 label: 'Cost',
@@ -89,7 +89,7 @@ describe('NumberField.vue', () => {
 
     it('should show filtered value when filter is used', async () => {
         require('../../filters');
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 50,
                 placeholder: 'Start typing here...',
@@ -104,7 +104,7 @@ describe('NumberField.vue', () => {
     });
 
     it('should show a hyphen if value is blank in view mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 placeholder: 'Start typing here...',
                 type: 'Number',
@@ -116,7 +116,7 @@ describe('NumberField.vue', () => {
     });
 
     it('should show currency box with input group when currency prop is passed', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 50,
                 type: 'Number',
@@ -130,7 +130,7 @@ describe('NumberField.vue', () => {
     });
 
     it('should show min and max attributes when min and max are passed as props', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 50,
                 type: 'Number',

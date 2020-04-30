@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import FieldFor from '@/lib/FieldFor';
 import Vue from 'vue';
 
@@ -8,7 +8,7 @@ describe('TextareaField.vue', () => {
         wrapper.destroy();
     });
     it('should exist in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Textarea',
@@ -20,7 +20,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should show textarea in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Textarea',
@@ -32,7 +32,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should render the p tag in view mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Textarea',
@@ -44,7 +44,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should show the placeholder when placeholder is passed as prop in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Textarea',
@@ -57,7 +57,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should show have default 3 rows in edit mode when rows prop is not passed', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Textarea',
@@ -69,7 +69,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should show the number of rows when rows prop is passed in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Textarea',
@@ -82,7 +82,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should show the number of rows when rows prop is passed in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Textarea',
@@ -95,7 +95,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should show the label when label is passed as a prop', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 label: 'Description',
@@ -108,7 +108,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should hide the label when hide-label prop is set', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 label: 'Description',
@@ -122,7 +122,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should attach the "pre" class in view mode to pre-wrap the string', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'This is a sample text \n This is a new line',
                 type: 'Textarea',
@@ -134,7 +134,7 @@ describe('TextareaField.vue', () => {
     });
 
     it('should show a hyphen if value is blank in view mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 placeholder: 'Start typing here...',

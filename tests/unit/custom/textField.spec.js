@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import FieldFor from '@/lib/FieldFor';
 import Vue from 'vue';
 
@@ -9,7 +9,7 @@ describe('TextField.vue', () => {
     });
 
     it('does textbox exist in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Text',
@@ -21,7 +21,7 @@ describe('TextField.vue', () => {
     });
 
     it('does textbox show the correct value after edit', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Text',
@@ -35,7 +35,7 @@ describe('TextField.vue', () => {
     });
 
     it('does render the p tag in view mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'ABC',
                 type: 'Text',
@@ -47,7 +47,7 @@ describe('TextField.vue', () => {
     });
 
     it('should show the placeholder when placeholder is passed as a prop in edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 placeholder: 'Start typing here...',
@@ -60,7 +60,7 @@ describe('TextField.vue', () => {
     });
 
     it('should show the label when label is passed as a prop', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 label: 'Email',
@@ -73,7 +73,7 @@ describe('TextField.vue', () => {
     });
 
     it('should hide the label when hide-label prop is set', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 label: 'Email',
@@ -88,7 +88,7 @@ describe('TextField.vue', () => {
 
     it('should show filtered value when filter is used', async () => {
         require('../../filters');
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: 'aBCDE',
                 placeholder: 'Start typing here...',
@@ -102,7 +102,7 @@ describe('TextField.vue', () => {
     });
 
     it('should show a hyphen if value is blank in view mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 placeholder: 'Start typing here...',
@@ -116,7 +116,7 @@ describe('TextField.vue', () => {
 
     it('should disable the textbox when disabled prop doesnt meet the condition', async () => {
         const val = 'sharvilak@@e9ine.com';
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: val,
                 label: 'Email',
@@ -130,7 +130,7 @@ describe('TextField.vue', () => {
     });
 
     it('should show the suggestions in edit mode when should show-suggestion and suggestions props are passed and it should select if matching suggestion is tabbed via keyboard', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 type: 'Text',
@@ -151,7 +151,7 @@ describe('TextField.vue', () => {
     });
 
     it('should show the suggestions in edit mode when should show-suggestion and suggestions props are passed and it should keep typed string as it is if any matching suggestion is not found when tabbed via keyboard', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: '',
                 type: 'Text',

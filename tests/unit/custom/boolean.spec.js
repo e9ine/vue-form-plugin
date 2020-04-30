@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import FieldFor from '@/lib/FieldFor';
 import Vue from 'vue';
 
@@ -8,7 +8,7 @@ describe('BooleanField.vue', () => {
         wrapper.destroy();
     });
     it('should render toggle component with label and a hidden input checkbox', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: true,
                 type: 'Boolean',
@@ -21,7 +21,7 @@ describe('BooleanField.vue', () => {
     });
 
     it('should render toggle component in disabled state when mode is view', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: true,
                 type: 'Boolean',
@@ -33,7 +33,7 @@ describe('BooleanField.vue', () => {
     });
 
     it('should render toggle component in disabled state in edit mode when disabled prop is set to true', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: true,
                 type: 'Boolean',
@@ -46,7 +46,7 @@ describe('BooleanField.vue', () => {
     });
 
     it('should turn on the toggle after it is set during edit mode', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: false,
                 type: 'Boolean',
@@ -61,7 +61,7 @@ describe('BooleanField.vue', () => {
     });
 
     it('should show the label when label is passed as a prop', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: true,
                 label: 'Active',
@@ -76,7 +76,7 @@ describe('BooleanField.vue', () => {
     });
 
     it('should have same value for check-label[for] and input[id]', async () => {
-        wrapper = shallowMount(FieldFor, {
+        wrapper = mount(FieldFor, {
             propsData: {
                 value: true,
                 label: 'Active',
