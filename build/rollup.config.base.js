@@ -9,7 +9,7 @@ import vue from 'rollup-plugin-vue';
 const config = require('../package.json');
 
 export default {
-    input: 'src/index.js',
+    input: 'src/install.js',
     plugins: [
         vue({
             css: true

@@ -9,38 +9,57 @@
 
 <script>
 import { FieldMixin } from '../mixins/field';
-
+import BooleanField from './BooleanField.vue';
+import DateField from './DateField.vue';
+import MultiSelectField from './MultiSelectField.vue';
+import NumberField from './NumberField.vue';
+import PhoneField from './PhoneField.vue';
+import SelectField from './SelectField.vue';
+import TextareaField from './TextareaField.vue';
+import TextField from './TextField.vue';
+const mapping = {
+    Boolean: BooleanField,
+    Date: DateField,
+    MultiSelect: MultiSelectField,
+    Number: NumberField,
+    Phone: PhoneField,
+    Select: SelectField,
+    Textarea: TextareaField,
+    Text: TextField
+};
 export default {
     name: 'FieldFor',
     mixins: [FieldMixin],
     methods: {
-        // Custom Way
-        loadFieldComponentFromType() {
-            return () => import('./' + this.type + 'Field.vue');
-        },
         // Model service way
         loadFieldComponentFromModel() {
             if (this.property.type.name === 'String') {
-                if (this.property.textarea || this.rows) return () => import('./TextareaField.vue');
-                else if (this.selectFrom && this.multiple) return () => import('./MultiSelectField.vue');
-                else if (this.property.enum || this.selectFrom) return () => import('./SelectField.vue');
-                else if (this.property.phone || this.phone) return () => import('./PhoneField.vue');
-                return () => import('./TextField.vue');
+                if (this.property.textarea || this.rows) {
+                    this.component = TextareaField;
+                } else if (this.selectFrom && this.multiple) {
+                    this.component = MultiSelectField;
+                } else if (this.property.enum || this.selectFrom) {
+                    this.component = SelectField;
+                } else if (this.property.phone || this.phone) {
+                    this.component = PhoneField;
+                } else {
+                    this.component = TextField;
+                }
             } else if (this.property.type.name === 'Number') {
-                return () => import('./NumberField.vue');
+                this.component = NumberField;
             } else if (this.property.type.name === 'Boolean') {
-                return () => import('./BooleanField.vue');
+                this.component = BooleanField;
             } else if (this.property.type.name === 'Date' || this.property.type.name === 'moment') {
-                return () => import('./DateField.vue');
+                this.component = DateField;
             } else if (this.property.type.name === 'Array') {
-                return () => import('./MultiSelectField.vue');
+                this.component = MultiSelectField;
             }
         }
     },
     created() {
         // Custom way
         if (this.type) {
-            this.component = this.loadFieldComponentFromType();
+            this.component = mapping[this.type];
         } else if (this.$parent.schema) {
             // Model service way
             let prop = this.$parent.schema[this.field];
@@ -52,7 +71,7 @@ export default {
             prop.value = this.$parent.$props.data ? this.$parent.$props.data[this.field] : '-';
             this.property = JSON.parse(JSON.stringify(prop));
             this.property.type = prop.type;
-            this.component = this.loadFieldComponentFromModel();
+            this.loadFieldComponentFromModel();
         }
     }
 };

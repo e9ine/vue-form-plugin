@@ -5,6 +5,8 @@ public
 babel.config.js
 vue.config.js
 src/models
+src/lib/FieldForBrowser
+install.js
 App.vue
 main.js
 .gitignore
