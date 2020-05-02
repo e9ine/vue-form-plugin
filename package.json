@@ -1,6 +1,6 @@
 {
   "name": "@e9ine/vue-form-plugin",
-  "version": "0.0.1n",
+  "version": "0.0.1o",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "demo": "vue-cli-service build",
@@ -17,6 +17,7 @@
     "src/lib",
     "src/scss",
     "src/index.js",
+    "src/mixins",
     "dist/"
   ],
   "main": "dist/vue-form-plugin.umd.js",
