@@ -6,55 +6,112 @@ Docs : [https://app.netlify.com/sites/vue9-form-plugin](https://app.netlify.com/
 
 ## Installation
 
-### CLI Usage :
-```
-npm install --save @e9ine/vue-form-plugin 
-```
+## Full Plugin Usage
 
-1. For full usage, you can use the plugin without passing any options like below :
+Even though vue-form-plugin is so simple, you don't really need to set import locally within each component - you can simply set it up by using the plugin on Vue instance for a better developer experience.
 
-```vue
+To set up a new instance of vue-form-plugin, and start developing just use it like below:
+
+```js
 import Vue from 'vue';
 import VueFormPlugin from '@e9ine/vue-form-plugin';
+
 Vue.use(VueFormPlugin);
 ```
 
-2. You can also pass options in case you don't want to use a parent Form Wrapper `<FormFor>`.
+You can also pass options if you do not plan to use FormFor in your project.
 
-```vue
+```js
 import Vue from 'vue';
 import VueFormPlugin from '@e9ine/vue-form-plugin';
+
 Vue.use(VueFormPlugin, {
     formFor: false
 });
 ```
 
-3. Tree shaking individual component import : You can individually import the components locally within your components.
-```vue
-import { FieldFor } from '@e9ine/vue-form-plugin';
-```
+**Note**: CSS will be auto imported in this case. No need to manually import
 
-### SFC Usage
+## Tree Shaking Usage
 
-Manually include SFC components
+You can also import it separately in each component and use.
 
 ```js
-import FormFor from '@e9ine/vue-form-plugin/src/lib/FormFor';
-import FieldFor from '@e9ine/vue-form-plugin/src/lib/FieldFor';
+import {FormFor, FieldFor} from '@e9ine/vue-form-plugin';
+
+export default {
+    components: {
+        FieldFor,
+        FormFor
+    }
+}
+```
+**Note**: CSS will be auto imported in this case. No need to manually import
+
+## SFC & Dynamic import Usage
+
+To use the dynamic import version for FieldFor, load the plugin from **src directory**. This will follow on-demand loading for each component via dynamic imports.
+
+You will also need to manually include the scss in this case.
+
+```js
+import Vue from 'vue';
+import VueFormPlugin from '@e9ine/vue-form-plugin/src';
+
+Vue.use(VueFormPlugin); // options if any same as Full Plugin Usage
 ```
 
-Manually include CSS/SCSS in your style.scss.
+You can also import each component via tree shaking in your local components. This should be the preferred way if you are planning to use forms in only limited pages, suitable for websites.
+
+```js
+import {FormFor, FieldFor} from '@e9ine/vue-form-plugin/src';
+```
+
+Manually include CSS/SCSS in your style.scss. You can either import style.scss or manually pick certain scss files to be imported.
 
 ```scss
-@import '~@e9ine/vue-form-plugin/src/scss/style.scss'
+@import '~@e9ine/vue-form-plugin/src/scss/style.scss';
 ```
 
-### Browser Usage
+## CDN Usage (Browser)
 
-Include [vue-form-plugin](./dist/bue-form-plugin.min.js) in the page.
+Include [vue-form-plugin](https://unpkg.com/@e9ine/vue-form-plugin) in the page. Make sure to keep the component name in kebab case as running Vue in browser mode can't detect capitalised component names.
+
+No need to write Vue.use line since plugin will take care of automatically getting installed in Global Vue context.
+
+Look at a simple example below :
 
 ```html
-<script src="https://unpkg.com/@e9ine/vue-form-plugin"></script>
+<head>
+    <title>Browser build</title>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script src="https://unpkg.com/@e9ine/vue-form-plugin"></script>
+</head>
+<div id="app">
+    <field-for 
+            type="Number" 
+            label="Counter" 
+            :value.sync="counter" 
+            display-mode="EDIT">
+    </field-for>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0
+        }
+    });
+</script>
+```
+
+## CDN Usage (ESM)
+
+```html
+<script type="module">
+    import Vue from "https://unpkg.com/browse/vue@2.6.11/dist/vue.esm.browser.js"
+    import VueFormPlugin from  "https://unpkg.com/@e9ine/vue-form-plugin/dist/vue-form-plugin.esm.js";
+</script>
 ```
 
 ## Examples
