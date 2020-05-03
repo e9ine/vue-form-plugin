@@ -12,7 +12,8 @@ export const FieldMixin = {
             type: String
         },
         required: {
-            type: [String, Boolean]
+            type: Boolean,
+            default: undefined
         },
         placeholder: {
             type: String

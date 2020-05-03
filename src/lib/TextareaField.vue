@@ -18,7 +18,7 @@ export default {
             type: String
         },
         required: {
-            type: [String, Boolean]
+            type: Boolean
         },
         placeholder: {
             type: String
@@ -55,7 +55,7 @@ export default {
     data() {
         return {
             clonedValue: {
-                value: this.value || this.property.value
+                value: this.value ?? this.property.value
             }
         };
     },
@@ -66,10 +66,10 @@ export default {
         },
         validate() {
             if (this.property) {
-                if ((this.required || this.property.required) && !this.clonedValue.value) {
+                if ((this.required ?? this.property.required) && !this.clonedValue.value) {
                     this.clonedValue.$invalid = true;
                     this.clonedValue.$error = 'required';
-                } else if (this.property.regex && this.property.regex.test(this.clonedValue.value)) {
+                } else if (this.regex && !this.clonedValue.value.test(this.regex)) {
                     this.clonedValue.$invalid = true;
                     this.clonedValue.$error = 'regex';
                 } else if (this.property.maxlength && (!this.clonedValue.value || this.clonedValue.value.length > this.property.maxlength)) {

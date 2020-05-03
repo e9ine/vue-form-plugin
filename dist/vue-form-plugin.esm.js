@@ -6,7 +6,7 @@ import 'core-js/modules/es.array.concat';
 import 'core-js/modules/es.array.slice';
 import 'core-js/modules/es.array.filter';
 import flatPickr from 'vue-flatpickr-component';
-import moment from 'moment';
+import moment from 'moment/moment';
 import 'core-js/modules/es.array.find';
 import 'core-js/modules/es.array.index-of';
 import 'core-js/modules/es.array.join';
@@ -62,7 +62,8 @@ var FieldMixin = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean,
+      default: undefined
     },
     placeholder: {
       type: String
@@ -269,7 +270,7 @@ var script = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean
     },
     customClass: {
       type: String
@@ -291,9 +292,11 @@ var script = {
     }
   },
   data: function data() {
+    var _ref, _this$value;
+
     return {
       clonedValue: {
-        value: this.value !== undefined ? this.value : this.property.value !== undefined ? this.property.value : false
+        value: (_ref = (_this$value = this.value) !== null && _this$value !== void 0 ? _this$value : this.property.value) !== null && _ref !== void 0 ? _ref : false
       },
       randomId: Math.random()
     };
@@ -490,7 +493,7 @@ var script$1 = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean
     },
     placeholder: {
       type: String
@@ -560,7 +563,9 @@ var script$1 = {
     },
     validate: function validate() {
       if (this.property) {
-        if ((this.required || this.property.required) && !this.clonedValue.value) {
+        var _this$required;
+
+        if (((_this$required = this.required) !== null && _this$required !== void 0 ? _this$required : this.property.required) && !this.clonedValue.value) {
           this.clonedValue.$invalid = true;
           this.clonedValue.$error = 'required';
         } else {
@@ -571,7 +576,9 @@ var script$1 = {
     }
   },
   created: function created() {
-    this.clonedValue.value = this.value || (this.property ? this.property.value : undefined);
+    var _ref, _this$value, _this$property;
+
+    this.clonedValue.value = (_ref = (_this$value = this.value) !== null && _this$value !== void 0 ? _this$value : (_this$property = this.property) === null || _this$property === void 0 ? void 0 : _this$property.value) !== null && _ref !== void 0 ? _ref : undefined;
     this.formattedValue = this.clonedValue.value;
     this.handler();
   }
@@ -727,7 +734,7 @@ var script$2 = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean
     },
     placeholder: {
       type: String
@@ -1010,7 +1017,7 @@ var __vue_staticRenderFns__$2 = [];
 var __vue_inject_styles__$2 = undefined;
 /* scoped */
 
-var __vue_scope_id__$2 = "data-v-39884eec";
+var __vue_scope_id__$2 = "data-v-596c3a99";
 /* module identifier */
 
 var __vue_module_identifier__$2 = undefined;
@@ -1055,7 +1062,7 @@ var script$3 = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean
     },
     placeholder: {
       type: String
@@ -1098,9 +1105,11 @@ var script$3 = {
     }
   },
   data: function data() {
+    var _ref, _this$value, _this$property;
+
     return {
       clonedValue: {
-        value: this.value !== undefined ? this.value : this.property ? this.property.value : undefined
+        value: (_ref = (_this$value = this.value) !== null && _this$value !== void 0 ? _this$value : (_this$property = this.property) === null || _this$property === void 0 ? void 0 : _this$property.value) !== null && _ref !== void 0 ? _ref : undefined
       }
     };
   },
@@ -1115,7 +1124,9 @@ var script$3 = {
     },
     validate: function validate() {
       if (this.property) {
-        if ((this.required || this.property.required) && !this.clonedValue.value && this.clonedValue.value !== 0) {
+        var _this$required;
+
+        if (((_this$required = this.required) !== null && _this$required !== void 0 ? _this$required : this.property.required) && !this.clonedValue.value && this.clonedValue.value !== 0) {
           this.clonedValue.$invalid = true;
           this.clonedValue.$error = 'required';
         } else if (this.min !== undefined && this.clonedValue.value < this.min) {
@@ -1257,7 +1268,7 @@ var script$4 = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean
     },
     placeholder: {
       type: String
@@ -1289,9 +1300,11 @@ var script$4 = {
     VueTelInput: VueTelInput
   },
   data: function data() {
+    var _ref, _this$value, _this$property;
+
     return {
       clonedValue: {
-        value: this.value || (this.property ? this.property.value : undefined)
+        value: (_ref = (_this$value = this.value) !== null && _this$value !== void 0 ? _this$value : (_this$property = this.property) === null || _this$property === void 0 ? void 0 : _this$property.value) !== null && _ref !== void 0 ? _ref : undefined
       }
     };
   },
@@ -1410,7 +1423,7 @@ var script$5 = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean
     },
     placeholder: {
       type: String
@@ -1515,7 +1528,9 @@ var script$5 = {
   },
   computed: {
     items: function items() {
-      return this.selectFrom || (this.property ? this.property.enum : []);
+      var _ref, _this$selectFrom, _this$property;
+
+      return (_ref = (_this$selectFrom = this.selectFrom) !== null && _this$selectFrom !== void 0 ? _this$selectFrom : (_this$property = this.property) === null || _this$property === void 0 ? void 0 : _this$property.enum) !== null && _ref !== void 0 ? _ref : [];
     },
     displayFromObject: function displayFromObject() {
       var _this = this;
@@ -1565,10 +1580,12 @@ var script$5 = {
         this.selected = undefined;
       }
     } else {
+      var _this$property2;
+
       // else treat the value as string
       if (this.value) {
         this.selected = this.value;
-      } else if (this.property && this.property.value) {
+      } else if ((_this$property2 = this.property) === null || _this$property2 === void 0 ? void 0 : _this$property2.value) {
         this.selected = this.property.value;
       } else {
         this.selected = undefined;
@@ -1769,8 +1786,8 @@ var __vue_staticRenderFns__$5 = [];
 
 var __vue_inject_styles__$5 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-973706a8_0", {
-    source: ".profile[data-v-973706a8]{display:inline-block;margin-right:8px;border-radius:50%;height:30px;width:30px}",
+  inject("data-v-02a8fcd1_0", {
+    source: ".profile[data-v-02a8fcd1]{display:inline-block;margin-right:8px;border-radius:50%;height:30px;width:30px}",
     map: undefined,
     media: undefined
   });
@@ -1778,7 +1795,7 @@ var __vue_inject_styles__$5 = function __vue_inject_styles__(inject) {
 /* scoped */
 
 
-var __vue_scope_id__$5 = "data-v-973706a8";
+var __vue_scope_id__$5 = "data-v-02a8fcd1";
 /* module identifier */
 
 var __vue_module_identifier__$5 = undefined;
@@ -1813,7 +1830,7 @@ var script$6 = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean
     },
     placeholder: {
       type: String
@@ -1850,9 +1867,11 @@ var script$6 = {
     }
   },
   data: function data() {
+    var _this$value;
+
     return {
       clonedValue: {
-        value: this.value || this.property.value
+        value: (_this$value = this.value) !== null && _this$value !== void 0 ? _this$value : this.property.value
       }
     };
   },
@@ -1863,10 +1882,12 @@ var script$6 = {
     },
     validate: function validate() {
       if (this.property) {
-        if ((this.required || this.property.required) && !this.clonedValue.value) {
+        var _this$required;
+
+        if (((_this$required = this.required) !== null && _this$required !== void 0 ? _this$required : this.property.required) && !this.clonedValue.value) {
           this.clonedValue.$invalid = true;
           this.clonedValue.$error = 'required';
-        } else if (this.property.regex && this.property.regex.test(this.clonedValue.value)) {
+        } else if (this.regex && !this.clonedValue.value.test(this.regex)) {
           this.clonedValue.$invalid = true;
           this.clonedValue.$error = 'regex';
         } else if (this.property.maxlength && (!this.clonedValue.value || this.clonedValue.value.length > this.property.maxlength)) {
@@ -1956,8 +1977,8 @@ var __vue_staticRenderFns__$6 = [];
 
 var __vue_inject_styles__$6 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-616d0cea_0", {
-    source: ".pre[data-v-616d0cea]{white-space:pre}",
+  inject("data-v-2cd59686_0", {
+    source: ".pre[data-v-2cd59686]{white-space:pre}",
     map: undefined,
     media: undefined
   });
@@ -1965,7 +1986,7 @@ var __vue_inject_styles__$6 = function __vue_inject_styles__(inject) {
 /* scoped */
 
 
-var __vue_scope_id__$6 = "data-v-616d0cea";
+var __vue_scope_id__$6 = "data-v-2cd59686";
 /* module identifier */
 
 var __vue_module_identifier__$6 = undefined;
@@ -2004,7 +2025,7 @@ var script$7 = {
       type: String
     },
     required: {
-      type: [String, Boolean]
+      type: Boolean
     },
     placeholder: {
       type: String
@@ -2048,9 +2069,11 @@ var script$7 = {
     }
   },
   data: function data() {
+    var _ref, _this$value, _this$property;
+
     return {
       clonedValue: {
-        value: this.value || (this.property ? this.property.value : undefined)
+        value: (_ref = (_this$value = this.value) !== null && _this$value !== void 0 ? _this$value : (_this$property = this.property) === null || _this$property === void 0 ? void 0 : _this$property.value) !== null && _ref !== void 0 ? _ref : undefined
       },
       filteredSuggestion: null,
       isOpen: false
@@ -2086,7 +2109,9 @@ var script$7 = {
     },
     validate: function validate() {
       if (this.property) {
-        if ((this.required || this.property.required) && !this.clonedValue.value) {
+        var _this$required;
+
+        if (((_this$required = this.required) !== null && _this$required !== void 0 ? _this$required : this.property.required) && !this.clonedValue.value) {
           this.clonedValue.$invalid = true;
           this.clonedValue.$error = 'required'; // eslint-disable-next-line
         } else if (this.property.email && !/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(this.clonedValue.value)) {

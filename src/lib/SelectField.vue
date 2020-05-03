@@ -60,7 +60,7 @@ export default {
             type: String
         },
         required: {
-            type: [String, Boolean]
+            type: Boolean
         },
         placeholder: {
             type: String
@@ -161,7 +161,7 @@ export default {
     },
     computed: {
         items() {
-            return this.selectFrom || (this.property ? this.property.enum : []);
+            return this.selectFrom ?? this.property?.enum ?? [];
         },
         displayFromObject() {
             let result;
@@ -198,7 +198,7 @@ export default {
             // else treat the value as string
             if (this.value) {
                 this.selected = this.value;
-            } else if (this.property && this.property.value) {
+            } else if (this.property?.value) {
                 this.selected = this.property.value;
             } else {
                 this.selected = undefined;

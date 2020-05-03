@@ -17,7 +17,7 @@ export default {
             type: String
         },
         required: {
-            type: [String, Boolean]
+            type: Boolean
         },
         customClass: {
             type: String
@@ -41,7 +41,7 @@ export default {
     data() {
         return {
             clonedValue: {
-                value: this.value !== undefined ? this.value : this.property.value !== undefined ? this.property.value : false
+                value: this.value ?? this.property.value ?? false
             },
             randomId: Math.random()
         };

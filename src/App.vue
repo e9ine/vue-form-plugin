@@ -11,7 +11,7 @@
         <h5>FormFor Level 1</h5>
         <FormFor :data="project" display-mode="EDIT" v-slot="form1">
             Invalid : {{ form1.invalid }}
-            <FieldFor field="Name"></FieldFor>
+            <FieldFor field="Name" :required="true"></FieldFor>
             <FieldFor field="Description"></FieldFor>
             <h5>FormFor Level 2</h5>
             <FormFor :data="project.Address" display-mode="EDIT" v-slot="form2">
@@ -19,7 +19,6 @@
                 <FieldFor field="Line1"></FieldFor>
                 <FieldFor field="Line2"></FieldFor>
                 <h5>FormFor Level 3</h5>
-                4
                 <FormFor :data="project.Address.Location" display-mode="EDIT" v-slot="form3">
                     Invalid : {{ form3.invalid }}
                     <FieldFor field="Longitude"></FieldFor>
@@ -48,6 +47,7 @@ export default {
             birthDate: new Date(),
             project: new Project({
                 Address: new Address({
+                    Line1: 'Prescott Street',
                     Location: new Location()
                 })
             }),

@@ -23,7 +23,7 @@ export default {
             type: String
         },
         required: {
-            type: [String, Boolean]
+            type: Boolean
         },
         placeholder: {
             type: String
@@ -90,7 +90,7 @@ export default {
         },
         validate() {
             if (this.property) {
-                if ((this.required || this.property.required) && !this.clonedValue.value) {
+                if ((this.required ?? this.property.required) && !this.clonedValue.value) {
                     this.clonedValue.$invalid = true;
                     this.clonedValue.$error = 'required';
                 } else {
@@ -101,7 +101,7 @@ export default {
         }
     },
     created() {
-        this.clonedValue.value = this.value || (this.property ? this.property.value : undefined);
+        this.clonedValue.value = this.value ?? this.property?.value ?? undefined;
         this.formattedValue = this.clonedValue.value;
         this.handler();
     }

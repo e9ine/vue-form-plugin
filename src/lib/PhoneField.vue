@@ -18,7 +18,7 @@ export default {
             type: String
         },
         required: {
-            type: [String, Boolean]
+            type: Boolean
         },
         placeholder: {
             type: String
@@ -52,7 +52,7 @@ export default {
     data() {
         return {
             clonedValue: {
-                value: this.value || (this.property ? this.property.value : undefined)
+                value: this.value ?? this.property?.value ?? undefined
             }
         };
     },

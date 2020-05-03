@@ -38,7 +38,7 @@ export default {
             type: String
         },
         required: {
-            type: [String, Boolean]
+            type: Boolean
         },
         placeholder: {
             type: String

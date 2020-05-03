@@ -22,7 +22,7 @@ export default {
             type: String
         },
         required: {
-            type: [String, Boolean]
+            type: Boolean
         },
         placeholder: {
             type: String
@@ -66,7 +66,7 @@ export default {
     data() {
         return {
             clonedValue: {
-                value: this.value || (this.property ? this.property.value : undefined)
+                value: this.value ?? this.property?.value ?? undefined
             },
             filteredSuggestion: null,
             isOpen: false
@@ -96,7 +96,7 @@ export default {
         },
         validate() {
             if (this.property) {
-                if ((this.required || this.property.required) && !this.clonedValue.value) {
+                if ((this.required ?? this.property.required) && !this.clonedValue.value) {
                     this.clonedValue.$invalid = true;
                     this.clonedValue.$error = 'required';
                     // eslint-disable-next-line
