@@ -1,5 +1,5 @@
 # vue-form-plugin
-Docs : [https://app.netlify.com/sites/vue9-form-plugin](https://app.netlify.com/sites/vue9-form-plugin)
+Docs : [https://vue9-form-plugin.netlify.app](https://vue9-form-plugin.netlify.app)
 
 [![Build Status](https://travis-ci.org/sharvilak11/vue-form-plugin.svg?branch=master)](https://travis-ci.org/sharvilak11/vue-form-plugin)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e3f2cb11-e545-4955-bde2-b2601ea51a40/deploy-status)](https://app.netlify.com/sites/vue9-form-plugin/deploys)
