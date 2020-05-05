@@ -1,6 +1,13 @@
 <template>
     <div id="app">
-        <FieldFor type="Text" :value.sync="name" label="Name" display-mode="EDIT"></FieldFor>
+        <FieldFor type="Text" :value.sync="name" display-mode="VIEW">
+            <template v-slot:label>
+                <div style="color: red">Custom Label</div>
+            </template>
+            <template v-slot:view>
+                <p style="color: black; font-style: italic">This is custom slot for view mode</p>
+            </template>
+        </FieldFor>
         <FieldFor type="Textarea" :value.sync="description" label="Description" display-mode="EDIT"></FieldFor>
         <FieldFor type="Number" :value.sync="age" label="Age" display-mode="EDIT"></FieldFor>
         <FieldFor type="Boolean" :value.sync="bool" label="Yes" display-mode="EDIT"></FieldFor>
@@ -71,7 +78,6 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
     padding: 32px;
 }

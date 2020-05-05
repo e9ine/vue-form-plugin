@@ -1,6 +1,9 @@
 <template>
     <div>
-        <label class="control-label" :for="label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
+        <template v-if="$slots.label">
+            <slot name="label"></slot>
+        </template>
+        <label v-else class="control-label" :for="label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <br class="clearfix" />
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
             <div v-if="multiple && typeof items[0] === 'object'" class="multiple">
@@ -22,6 +25,9 @@
                 <multiselect v-model="selected" :options="items" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @close="handler" @remove="remove"></multiselect>
             </div>
         </div>
+        <template v-if="$slots.view && displayMode === 'VIEW'">
+            <slot name="view"></slot>
+        </template>
         <p class="form-control-static" v-else-if="selectFrom && displayMode === 'VIEW' && typeof selectFrom[0] === 'object'" v-text="displayFromObject"></p>
     </div>
 </template>

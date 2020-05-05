@@ -1,7 +1,14 @@
 <template>
     <div class="form-group">
-        <component :is="component" v-bind="$props" :attrs="$attrs" :value="value" :display-mode="displayMode ? displayMode : $parent.displayMode" :property="property" @updateValue="sendValue"> </component>
-        <p class="validation-message" v-if="property && invalid && $parent.displayMode !== 'VIEW'">
+        <component :is="component" v-bind="$props" :attrs="$attrs" :value="value" :display-mode="displayMode ? displayMode : options.displayMode" :property="property" @updateValue="sendValue">
+            <template v-slot:label v-if="$slots.label">
+                <slot name="label"></slot>
+            </template>
+            <template v-slot:view v-if="$slots.view">
+                <slot name="view"></slot>
+            </template>
+        </component>
+        <p class="validation-message" v-if="property && invalid && options.displayMode !== 'VIEW'">
             {{ validationMessage }}
         </p>
     </div>
@@ -41,15 +48,15 @@ export default {
         // Custom way
         if (this.type) {
             this.component = this.loadFieldComponentFromType();
-        } else if (this.$parent.schema) {
+        } else if (this.schema) {
             // Model service way
-            let prop = this.$parent.schema[this.field];
+            let prop = this.schema[this.field];
             if (prop === undefined) {
                 console.error(`${this.field} is not available in the schema. Please add it to your model.js in order to show a field.`);
                 return;
             }
             prop.name = this.field;
-            prop.value = this.$parent.$props.data ? this.$parent.$props.data[this.field] : '-';
+            prop.value = this.options.data ? this.options.data[this.field] : '-';
             this.property = JSON.parse(JSON.stringify(prop));
             this.property.type = prop.type;
             this.component = this.loadFieldComponentFromModel();

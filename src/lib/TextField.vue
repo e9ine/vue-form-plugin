@@ -1,6 +1,9 @@
 <template>
     <div>
-        <label class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
+        <template v-if="$slots.label">
+            <slot name="label"></slot>
+        </template>
+        <label v-else class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div class="form-element" v-if="displayMode === 'EDIT' || displayMode === 'CREATE'">
             <input type="text" :class="customClass" :name="attrs.name || label" :id="attrs.id || label || property.name" :required="required" autocomplete="off" :placeholder="placeholder" v-model="clonedValue.value" @input="handler" class="form-control" :disabled="disabled" @focusin="toggleSuggestion(true)" @focusout="toggleSuggestion(false)" @keydown.tab="setValue" v-bind="attrs" />
             <div class="intellisense" v-if="showSuggestion" :class="{ visible: filteredSuggestion && clonedValue.value && isOpen }" @click="setValue">
@@ -8,6 +11,9 @@
             </div>
             <div class="intellisense-help" v-if="showSuggestion && filteredSuggestion"><i class="material-icons">keyboard_tab</i>{{ filteredSuggestion ? 'Press Tab to Select' : '' }}</div>
         </div>
+        <template v-if="$slots.view && displayMode === 'VIEW'">
+            <slot name="view"></slot>
+        </template>
         <p class="form-control-static" v-else-if="(displayMode === 'VIEW' && property.filter) || filter">{{ $options.filters[filter || property.filter](clonedValue.value, ...(filterArgs || property.filterArgs)) }}</p>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW'" v-text="clonedValue.value || '-'"></p>
     </div>

@@ -1,9 +1,15 @@
 <template>
     <div>
-        <label class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
+        <template v-if="$slots.label">
+            <slot name="label"></slot>
+        </template>
+        <label v-else class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div class="form-element" v-if="displayMode === 'CREATE' || displayMode === 'EDIT'">
             <textarea :name="attrs.name || label" :id="attrs.id || label || property.name" :class="customClass" :required="required" :placeholder="placeholder" :disabled="disabled" :rows="rows || (property && property.textarea) || 3" v-model="clonedValue.value" @input="handler" class="form-control" v-bind="attrs"></textarea>
         </div>
+        <template v-if="$slots.view && displayMode === 'VIEW'">
+            <slot name="view"></slot>
+        </template>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW' && (property.filter || filter)">{{ $options.filters[filter || property.filter](clonedValue.value, ...(filterArgs || property.filterArgs)) }}</p>
         <p class="form-control-static pre" v-text="clonedValue.value || '-'" v-else-if="displayMode === 'VIEW'"></p>
     </div>

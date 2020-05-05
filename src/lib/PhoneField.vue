@@ -1,9 +1,15 @@
 <template>
     <div class="form-group">
-        <label class="control-label" :for="$attrs.id || label || property.name" v-text="label || property.name" v-if="label || property.name" v-show="!hideLabel"></label>
+        <template v-if="$slots.label">
+            <slot name="label"></slot>
+        </template>
+        <label v-else class="control-label" :for="$attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
             <vue-tel-input :enabled-flags="showFlags" :dynamic-placeholder="true" default-country="GB" :disabled-fetching-country="true" v-model="clonedValue.value" @input="handler" class="form-control" :country-changed="handler" :class="customClass"></vue-tel-input>
         </div>
+        <template v-if="$slots.view && displayMode === 'VIEW'">
+            <slot name="view"></slot>
+        </template>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW'">{{ clonedValue.value ? clonedValue.value : '-' }}</p>
     </div>
 </template>

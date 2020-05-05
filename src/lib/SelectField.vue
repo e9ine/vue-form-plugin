@@ -1,6 +1,9 @@
 <template>
     <div>
-        <label class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
+        <template v-if="$slots.label">
+            <slot name="label"></slot>
+        </template>
+        <label v-else class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
             <div v-if="typeof items[0] === 'object'" class="single">
                 <span class="allowclear" v-if="allowClear && displayMode !== 'VIEW' && clonedValue.value" @click="clearSelected">
@@ -32,6 +35,9 @@
                 <multiselect v-model="selected" :options="items" open-direction="bottom" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :disabled="disabled" :hide-selected="true" :placeholder="placeholder" @close="handler"> </multiselect>
             </div>
         </div>
+        <template v-if="$slots.view && displayMode === 'VIEW'">
+            <slot name="view"></slot>
+        </template>
         <p class="form-control-static" v-else-if="items && displayMode === 'VIEW' && typeof items[0] === 'string' && (property.filter || filter)">
             {{ $options.filters[filter || property.filter](clonedValue.value, ...(filterArgs || property.filterArgs)) || '-' }}
         </p>

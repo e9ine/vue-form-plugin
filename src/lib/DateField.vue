@@ -1,9 +1,15 @@
 <template>
     <div>
-        <label class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
+        <template v-if="$slots.label">
+            <slot name="label"></slot>
+        </template>
+        <label v-else class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
             <flat-pickr v-model="formattedValue" :config="{ ...config, ...calendarConfig, ...property.calendarConfig }" class="form-control datepicker" :placeholder="placeholder || 'DD/MM/YYY'" ref="calendar"></flat-pickr>
         </div>
+        <template v-if="$slots.view && displayMode === 'VIEW'">
+            <slot name="view"></slot>
+        </template>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value && !filter">{{ clonedValue.value | formatDate('DD/MM/YYYY') }}</p>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value && filter">{{ $options.filters[filter || property.filter](clonedValue.value, ...(filterArgs || property.filterArgs)) }}</p>
         <p class="form-control-static" v-else>-</p>

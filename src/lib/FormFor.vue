@@ -1,6 +1,6 @@
 <template>
     <div v-if="data && data.schema" autocomplete="off">
-        <slot :invalid="invalid" :errors="errors"></slot>
+        <slot :invalid="form.invalid" :errors="form.errors"></slot>
     </div>
 </template>
 
@@ -15,9 +15,21 @@ export default {
     },
     data() {
         return {
-            schema: null,
-            errors: [],
-            invalid: false
+            form: {
+                errors: [],
+                invalid: false
+            },
+            schema: this.data.schema()
+        };
+    },
+    provide() {
+        return {
+            schema: this.schema,
+            form: this.form,
+            options: {
+                data: this.data,
+                displayMode: this.displayMode
+            }
         };
     },
     async created() {

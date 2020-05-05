@@ -104,6 +104,17 @@ export const FieldMixin = {
             type: Object
         }
     },
+    inject: {
+        schema: {
+            default: null
+        },
+        form: {
+            default: null
+        },
+        options: {
+            default: null
+        }
+    },
     data() {
         return {
             component: null,
@@ -117,20 +128,20 @@ export const FieldMixin = {
             // Model service way
             if (this.property.name) {
                 this.property.value = valueObj.value;
-                this.$set(this.$parent.data, this.property.name, valueObj.value);
+                this.$set(this.options.data, this.property.name, valueObj.value);
                 this.invalid = valueObj.$invalid;
                 this.error = valueObj.$error;
-                let found = this.$parent.errors.findIndex(err => err.name === this.property.name);
+                let found = this.form.errors.findIndex(err => err.name === this.property.name);
                 if (found > -1) {
-                    this.$parent.errors.splice(found, 1);
+                    this.form.errors.splice(found, 1);
                 }
                 if (this.invalid) {
-                    this.$parent.errors.push({
+                    this.form.errors.push({
                         name: this.property.name,
                         error: valueObj.$error
                     });
                 }
-                this.$parent.invalid = this.$parent.errors.length !== 0;
+                this.form.invalid = this.form.errors.length !== 0;
 
                 // emit the changes
                 this.$emit('changed', this.property.value);
@@ -143,38 +154,13 @@ export const FieldMixin = {
     },
     computed: {
         validationMessage() {
-            let errMsg = '';
             if (!this.error) return '';
-            switch (this.error) {
-            case 'email': {
-                errMsg = 'Provided email is incorrect';
-                break;
+            if (this.invalid) {
+                if (!this.error) {
+                    this.error = 'default';
+                }
+                return typeof this.$messages[this.error] === 'string' ? this.$messages[this.error] : this.$messages[this.error](this.$props, this.property);
             }
-            case 'length': {
-                errMsg = 'Length of characters exceeds the allowed limit of ' + this.property.maxlength;
-                break;
-            }
-            case 'required': {
-                errMsg = (this.label || this.property.name) + ' field is a required field';
-                break;
-            }
-            case 'regex': {
-                errMsg = (this.label || this.property.name) + ' is not in the correct format';
-                break;
-            }
-            case 'min': {
-                errMsg = (this.label || this.property.name) + ' must be above ' + (this.min !== undefined ? this.min : this.property.min);
-                break;
-            }
-            case 'max': {
-                errMsg = (this.label || this.property.name) + ' must be below ' + (this.max !== undefined ? this.max : this.property.max);
-                break;
-            }
-            default: {
-                errMsg = (this.label || this.property.name) + ' is incorrect';
-            }
-            }
-            return errMsg;
         }
     }
 };

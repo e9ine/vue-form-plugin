@@ -1,6 +1,13 @@
 <template>
     <div class="form-group">
-        <component :is="component" v-bind="$props" :attrs="$attrs" :value="value" :display-mode="displayMode ? displayMode : $parent.displayMode" :property="property" @updateValue="sendValue"> </component>
+        <component :is="component" v-bind="$props" :attrs="$attrs" :value="value" :display-mode="displayMode ? displayMode : $parent.displayMode" :property="property" @updateValue="sendValue">
+            <template v-slot:label v-if="$slots.label">
+                <slot name="label"></slot>
+            </template>
+            <template v-slot:view v-if="$slots.view">
+                <slot name="view"></slot>
+            </template>
+        </component>
         <p class="validation-message" v-if="property && invalid && $parent.displayMode !== 'VIEW'">
             {{ validationMessage }}
         </p>
