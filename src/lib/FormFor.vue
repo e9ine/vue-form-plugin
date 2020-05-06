@@ -1,6 +1,6 @@
 <template>
     <div v-if="data && data.schema" autocomplete="off">
-        <slot :invalid="form.invalid" :errors="form.errors"></slot>
+        <slot></slot>
     </div>
 </template>
 
@@ -8,27 +8,29 @@
 export default {
     name: 'FormFor',
     props: {
-        displayMode: {
-            type: String
-        },
-        data: {}
+        data: {},
+        options: {
+            default: () => {
+                return {
+                    displayMode: 'EDIT',
+                    errors: [],
+                    invalid: false
+                };
+            }
+        }
     },
     data() {
         return {
-            form: {
-                errors: [],
-                invalid: false
-            },
             schema: this.data.schema()
         };
     },
     provide() {
         return {
             schema: this.schema,
-            form: this.form,
             options: {
                 data: this.data,
-                displayMode: this.displayMode
+                formOptions: this.options,
+                key: Date.now() // Track the form-for through a unique key in case of chains of form-for
             }
         };
     },

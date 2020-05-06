@@ -108,9 +108,6 @@ export const FieldMixin = {
         schema: {
             default: null
         },
-        form: {
-            default: null
-        },
         options: {
             default: null
         }
@@ -131,17 +128,18 @@ export const FieldMixin = {
                 this.$set(this.options.data, this.property.name, valueObj.value);
                 this.invalid = valueObj.$invalid;
                 this.error = valueObj.$error;
-                let found = this.form.errors.findIndex(err => err.name === this.property.name);
+                let found = this.options.formOptions.errors.findIndex(err => err.name === this.property.name && err.key === this.property.key);
                 if (found > -1) {
-                    this.form.errors.splice(found, 1);
+                    this.options.formOptions.errors.splice(found, 1);
                 }
                 if (this.invalid) {
-                    this.form.errors.push({
+                    this.options.formOptions.errors.push({
+                        key: this.property.key,
                         name: this.property.name,
                         error: valueObj.$error
                     });
                 }
-                this.form.invalid = this.form.errors.length !== 0;
+                this.options.formOptions.invalid = this.options.formOptions.errors.length !== 0;
 
                 // emit the changes
                 this.$emit('changed', this.property.value);

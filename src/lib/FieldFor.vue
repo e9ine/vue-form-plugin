@@ -1,6 +1,6 @@
 <template>
     <div class="form-group">
-        <component :is="component" v-bind="$props" :attrs="$attrs" :value="value" :display-mode="displayMode ? displayMode : options.displayMode" :property="property" @updateValue="sendValue">
+        <component :is="component" v-bind="$props" :attrs="$attrs" :value="value" :display-mode="displayMode ? displayMode : options.formOptions.displayMode" :property="property" @updateValue="sendValue">
             <template v-slot:label v-if="$slots.label">
                 <slot name="label"></slot>
             </template>
@@ -8,7 +8,7 @@
                 <slot name="view"></slot>
             </template>
         </component>
-        <p class="validation-message" v-if="property && invalid && options.displayMode !== 'VIEW'">
+        <p class="validation-message" v-if="property && invalid && options.formOptions.displayMode !== 'VIEW'">
             {{ validationMessage }}
         </p>
     </div>
@@ -59,6 +59,7 @@ export default {
             prop.value = this.options.data ? this.options.data[this.field] : '-';
             this.property = JSON.parse(JSON.stringify(prop));
             this.property.type = prop.type;
+            this.property.key = this.options.key;
             this.component = this.loadFieldComponentFromModel();
         }
     }

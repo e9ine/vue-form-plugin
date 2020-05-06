@@ -15,19 +15,25 @@
         <FieldFor type="Select" :value.sync="gender" :select-from="genders" label="Gender" display-mode="EDIT"></FieldFor>
         <FieldFor type="Date" :value.sync="birthDate" label="Birth Date" display-mode="EDIT"></FieldFor>
         <FieldFor type="Select" :value.sync="vitamin" label="Vitamin" display-mode="EDIT" :select-from="vitamins" :show-avatar="true" avatar-prop="ImageUrl"></FieldFor>
-        <h5>FormFor Level 1</h5>
-        <FormFor :data="project" display-mode="EDIT" v-slot="form1">
-            Invalid : {{ form1.invalid }}
+
+        <h3>FormFor Level 1</h3>
+        <br />
+        <button style="display: block" @click="changeMode">Change mode</button>
+        <br />
+        <FormFor :data="project" :options="options">
+            <p>Invalid : {{ options.invalid }}</p>
+            <p>{{ options.errors }}</p>
+            <br />
             <FieldFor field="Name" :required="true"></FieldFor>
             <FieldFor field="Description"></FieldFor>
-            <h5>FormFor Level 2</h5>
-            <FormFor :data="project.Address" display-mode="EDIT" v-slot="form2">
-                Invalid : {{ form2.invalid }}
+            <h3>FormFor Level 2</h3>
+            <FormFor :data="project.Address">
+                <!-- This is tracked separately as it has a different reference -->
                 <FieldFor field="Line1"></FieldFor>
                 <FieldFor field="Line2"></FieldFor>
-                <h5>FormFor Level 3</h5>
-                <FormFor :data="project.Address.Location" display-mode="EDIT" v-slot="form3">
-                    Invalid : {{ form3.invalid }}
+                <h3>FormFor Level 3</h3>
+                <FormFor :data="project.Address.Location" :options="options">
+                    <!-- This is tracked with First Form-For as both share same reference -->
                     <FieldFor field="Longitude"></FieldFor>
                     <FieldFor field="Latitude"></FieldFor>
                 </FormFor>
@@ -67,8 +73,23 @@ export default {
                     ImageUrl: 'https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-mango.jpg'
                 }
             ],
-            vitamin: ''
+            vitamin: '',
+            options: {
+                displayMode: 'VIEW',
+                errors: [],
+                invalid: false
+            },
+            options2: {
+                displayMode: 'EDIT',
+                errors: [],
+                invalid: false
+            }
         };
+    },
+    methods: {
+        changeMode() {
+            this.options.displayMode = this.options.displayMode === 'EDIT' ? 'VIEW' : 'EDIT';
+        }
     }
 };
 </script>
