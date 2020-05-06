@@ -9,7 +9,15 @@ export default {
     name: 'FormFor',
     props: {
         data: {},
-        options: {}
+        options: {
+            default: () => {
+                return {
+                    displayMode: 'EDIT',
+                    errors: [],
+                    invalid: false
+                };
+            }
+        }
     },
     data() {
         return {
@@ -17,8 +25,6 @@ export default {
         };
     },
     provide() {
-        this.options.errors = [];
-        this.options.invalid = false;
         return {
             schema: this.schema,
             options: {

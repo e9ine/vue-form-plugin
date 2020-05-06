@@ -15,17 +15,19 @@
         <FieldFor type="Select" :value.sync="gender" :select-from="genders" label="Gender" display-mode="EDIT"></FieldFor>
         <FieldFor type="Date" :value.sync="birthDate" label="Birth Date" display-mode="EDIT"></FieldFor>
         <FieldFor type="Select" :value.sync="vitamin" label="Vitamin" display-mode="EDIT" :select-from="vitamins" :show-avatar="true" avatar-prop="ImageUrl"></FieldFor>
+
         <h3>FormFor Level 1</h3>
         <br />
         <button style="display: block" @click="changeMode">Change mode</button>
         <br />
         <FormFor :data="project" :options="options">
             <p>Invalid : {{ options.invalid }}</p>
+            <p>{{ options.errors }}</p>
             <br />
             <FieldFor field="Name" :required="true"></FieldFor>
             <FieldFor field="Description"></FieldFor>
             <h3>FormFor Level 2</h3>
-            <FormFor :data="project.Address" :options="{ displayMode: 'EDIT' }">
+            <FormFor :data="project.Address">
                 <!-- This is tracked separately as it has a different reference -->
                 <FieldFor field="Line1"></FieldFor>
                 <FieldFor field="Line2"></FieldFor>
@@ -73,7 +75,14 @@ export default {
             ],
             vitamin: '',
             options: {
-                displayMode: 'VIEW'
+                displayMode: 'VIEW',
+                errors: [],
+                invalid: false
+            },
+            options2: {
+                displayMode: 'EDIT',
+                errors: [],
+                invalid: false
             }
         };
     },

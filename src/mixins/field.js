@@ -139,9 +139,7 @@ export const FieldMixin = {
                         error: valueObj.$error
                     });
                 }
-                let formOptions = this.options.formOptions;
-                formOptions.invalid = this.options.formOptions.errors.length !== 0;
-                this.options.formOptions = formOptions;
+                this.options.formOptions.invalid = this.options.formOptions.errors.length !== 0;
 
                 // emit the changes
                 this.$emit('changed', this.property.value);
