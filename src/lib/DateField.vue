@@ -7,7 +7,7 @@
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
             <flat-pickr v-model="formattedValue" :config="{ ...config, ...calendarConfig, ...property.calendarConfig }" class="form-control datepicker" :placeholder="placeholder || 'DD/MM/YYY'" ref="calendar"></flat-pickr>
         </div>
-        <template v-if="$slots.view && displayMode === 'VIEW'">
+        <template v-else-if="$slots.view && displayMode === 'VIEW'">
             <slot name="view"></slot>
         </template>
         <p class="form-control-static" v-else-if="displayMode === 'VIEW' && clonedValue.value && !filter">{{ clonedValue.value | formatDate('DD/MM/YYYY') }}</p>
