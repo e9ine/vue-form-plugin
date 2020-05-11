@@ -125,21 +125,20 @@ export const FieldMixin = {
             // Model service way
             if (this.property.name) {
                 this.property.value = valueObj.value;
-                this.$set(this.options.data, this.property.name, valueObj.value);
+                this.$set(this.$parent.data, this.property.name, valueObj.value);
                 this.invalid = valueObj.$invalid;
                 this.error = valueObj.$error;
-                let found = this.options.formOptions.errors.findIndex(err => err.name === this.property.name && err.key === this.property.key);
+                let found = this.$parent.errors.findIndex(err => err.name === this.property.name);
                 if (found > -1) {
-                    this.options.formOptions.errors.splice(found, 1);
+                    this.$parent.errors.splice(found, 1);
                 }
                 if (this.invalid) {
-                    this.options.formOptions.errors.push({
-                        key: this.property.key,
+                    this.$parent.errors.push({
                         name: this.property.name,
                         error: valueObj.$error
                     });
                 }
-                this.options.formOptions.invalid = this.options.formOptions.errors.length !== 0;
+                this.$parent.invalid = this.$parent.errors.length !== 0;
 
                 // emit the changes
                 this.$emit('changed', this.property.value);

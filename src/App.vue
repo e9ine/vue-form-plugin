@@ -18,21 +18,20 @@
 
         <h3>FormFor Level 1</h3>
         <br />
-        <button style="display: block" @click="changeMode">Change mode</button>
         <br />
-        <FormFor :data="project" :options="options">
-            <p>Invalid : {{ options.invalid }}</p>
-            <p>{{ options.errors }}</p>
+        <FormFor :data="project" display-mode="EDIT" ref="form1">
+            <p v-if="$refs.form1">Invalid : {{ $refs.form1.invalid }}</p>
+            <p v-if="$refs.form1">{{ $refs.form1.errors }}</p>
             <br />
             <FieldFor field="Name" :required="true"></FieldFor>
             <FieldFor field="Description"></FieldFor>
             <h3>FormFor Level 2</h3>
-            <FormFor :data="project.Address">
+            <FormFor :data="project.Address" display-mode="EDIT" ref="form2">
                 <!-- This is tracked separately as it has a different reference -->
                 <FieldFor field="Line1"></FieldFor>
                 <FieldFor field="Line2"></FieldFor>
                 <h3>FormFor Level 3</h3>
-                <FormFor :data="project.Address.Location" :options="options">
+                <FormFor :data="project.Address.Location" display-mode="EDIT">
                     <!-- This is tracked with First Form-For as both share same reference -->
                     <FieldFor field="Longitude"></FieldFor>
                     <FieldFor field="Latitude"></FieldFor>
@@ -73,23 +72,11 @@ export default {
                     ImageUrl: 'https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-mango.jpg'
                 }
             ],
-            vitamin: '',
-            options: {
-                displayMode: 'VIEW',
-                errors: [],
-                invalid: false
-            },
-            options2: {
-                displayMode: 'EDIT',
-                errors: [],
-                invalid: false
-            }
+            vitamin: ''
         };
     },
-    methods: {
-        changeMode() {
-            this.options.displayMode = this.options.displayMode === 'EDIT' ? 'VIEW' : 'EDIT';
-        }
+    mounted() {
+        console.log(this.$refs.form1);
     }
 };
 </script>
