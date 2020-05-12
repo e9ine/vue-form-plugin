@@ -5,7 +5,7 @@
         </template>
         <label v-else class="control-label" :for="$attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
-            <vue-tel-input :enabled-flags="showFlags" :dynamic-placeholder="true" default-country="GB" :disabled-fetching-country="true" v-model="clonedValue.value" @input="handler" class="form-control" :country-changed="handler" :class="customClass"></vue-tel-input>
+            <vue-tel-input :enabled-flags="showFlags" :dynamic-placeholder="true" default-country="GB" :disabled-fetching-country="true" v-model="clonedValue.value" @input="handler" class="form-control" :country-changed="handler" :class="customClass" :style="customStyle"></vue-tel-input>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
             <slot name="view"></slot>
@@ -31,6 +31,9 @@ export default {
         },
         customClass: {
             type: String
+        },
+        customStyle: {
+            type: Object
         },
         disabled: {
             type: Boolean

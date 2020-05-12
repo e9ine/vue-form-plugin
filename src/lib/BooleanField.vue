@@ -5,7 +5,7 @@
         </template>
         <label v-else class="control-label" v-text="attrs.id || label || property.name" v-show="!hideLabel"></label>
         <div class="form-element">
-            <input :class="customClass" class="check" type="checkbox" :id="attrs.id || randomId" v-model="clonedValue.value" :disabled="disabled || displayMode === 'VIEW'" @change="handler" v-bind="attrs" />
+            <input :class="customClass" :style="customStyle" class="check" type="checkbox" :id="attrs.id || randomId" v-model="clonedValue.value" :disabled="disabled || displayMode === 'VIEW'" @change="handler" v-bind="attrs" />
             <label class="check-label" :for="randomId"></label>
         </div>
     </div>
@@ -24,6 +24,9 @@ export default {
         },
         customClass: {
             type: String
+        },
+        customStyle: {
+            type: Object
         },
         disabled: {
             type: Boolean

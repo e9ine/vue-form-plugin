@@ -5,7 +5,7 @@
         </template>
         <label v-else class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div class="form-element" v-if="displayMode === 'CREATE' || displayMode === 'EDIT'">
-            <textarea :name="attrs.name || label" :id="attrs.id || label || property.name" :class="customClass" :required="required" :placeholder="placeholder" :disabled="disabled" :rows="rows || (property && property.textarea) || 3" v-model="clonedValue.value" @input="handler" @focusout="$emit('touched')" class="form-control" v-bind="attrs"> </textarea>
+            <textarea :name="attrs.name || label" :id="attrs.id || label || property.name" :style="customStyle" :class="customClass" :required="required" :placeholder="placeholder" :disabled="disabled" :rows="rows || (property && property.textarea) || 3" v-model="clonedValue.value" @input="handler" @focusout="$emit('touched')" class="form-control" v-bind="attrs"> </textarea>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
             <slot name="view"></slot>
@@ -31,6 +31,9 @@ export default {
         },
         customClass: {
             type: String
+        },
+        customStyle: {
+            type: Object
         },
         disabled: {
             type: Boolean

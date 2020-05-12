@@ -21,6 +21,9 @@ export const FieldMixin = {
         customClass: {
             type: String
         },
+        customStyle: {
+            type: Object
+        },
         disabled: {
             type: Boolean
         },
@@ -46,6 +49,10 @@ export const FieldMixin = {
         },
         suggestions: {
             type: Array
+        },
+        showValidationIndicators: {
+            type: Boolean,
+            default: false
         },
         // input[type=number]
         min: {

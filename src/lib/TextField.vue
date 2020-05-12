@@ -5,7 +5,7 @@
         </template>
         <label v-else class="control-label" :for="attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div class="form-element" v-if="displayMode === 'EDIT' || displayMode === 'CREATE'">
-            <input type="text" :class="customClass" :name="attrs.name || label" :id="attrs.id || label || property.name" :required="required" autocomplete="off" :placeholder="placeholder" v-model="clonedValue.value" @input="handler" class="form-control" :disabled="disabled" @focusin="toggleSuggestion(true)" @focusout="toggleSuggestion(false)" @keydown.tab="setValue" v-bind="attrs" />
+            <input type="text" :class="customClass" :style="customStyle" :name="attrs.name || label" :id="attrs.id || label || property.name" :required="required" autocomplete="off" :placeholder="placeholder" v-model="clonedValue.value" @input="handler" class="form-control" :disabled="disabled" @focusin="toggleSuggestion(true)" @focusout="toggleSuggestion(false)" @keydown.tab="setValue" v-bind="attrs" />
             <div class="intellisense" v-if="showSuggestion" :class="{ visible: filteredSuggestion && clonedValue.value && isOpen }" @click="setValue">
                 {{ filteredSuggestion }}
             </div>
@@ -35,6 +35,9 @@ export default {
         },
         customClass: {
             type: String
+        },
+        customStyle: {
+            type: Object
         },
         disabled: {
             type: Boolean

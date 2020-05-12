@@ -9,7 +9,7 @@
                 <div class="input-group-prepend" v-if="prepend">
                     <span class="input-group-text">{{ prepend }}</span>
                 </div>
-                <input type="number" :name="attrs.name || label" :id="attrs.id || label || property.name" :required="required" :placeholder="placeholder" :class="[customClass, { 'w-auto': prepend }]" :min="min" :max="max" v-model="clonedValue.value" @input="handler" @focusout="$emit('touched')" class="form-control" :disabled="disabled" v-bind="attrs" />
+                <input type="number" :name="attrs.name || label" :id="attrs.id || label || property.name" :required="required" :placeholder="placeholder" :class="[customClass, { 'w-auto': prepend }]" :style="customStyle" :min="min" :max="max" v-model="clonedValue.value" @input="handler" @focusout="$emit('touched')" class="form-control" :disabled="disabled" v-bind="attrs" />
             </div>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
@@ -39,6 +39,9 @@ export default {
         },
         customClass: {
             type: String
+        },
+        customStyle: {
+            type: Object
         },
         disabled: {
             type: Boolean

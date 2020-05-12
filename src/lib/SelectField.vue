@@ -9,7 +9,7 @@
                 <span class="allowclear" v-if="allowClear && displayMode !== 'VIEW' && clonedValue.value" @click="clearSelected">
                     <i class="material-icons">close</i>
                 </span>
-                <multiselect v-model="selected" :options="items" open-direction="bottom" :track-by="valueField || '_id'" :label="displayField || 'Name'" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :hide-selected="true" :disabled="disabled" :placeholder="placeholder" :allow-empty="allowClear" @close="handler">
+                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" open-direction="bottom" :track-by="valueField || '_id'" :label="displayField || 'Name'" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :hide-selected="true" :disabled="disabled" :placeholder="placeholder" :allow-empty="allowClear" @close="handler">
                     <template slot="option" slot-scope="props">
                         <div v-if="optionTemplate && optionTemplate.length > 0 && props && props.option">
                             <v-runtime-template :template="optionTemplate" :template-props="{ props }"></v-runtime-template>
@@ -32,7 +32,7 @@
                 <span class="allowclear" v-if="allowClear && displayMode !== 'VIEW' && clonedValue.value" @click="clearSelected">
                     <i class="material-icons">close</i>
                 </span>
-                <multiselect v-model="selected" :options="items" open-direction="bottom" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :disabled="disabled" :hide-selected="true" :placeholder="placeholder" @close="handler"> </multiselect>
+                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" open-direction="bottom" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :disabled="disabled" :hide-selected="true" :placeholder="placeholder" @close="handler"> </multiselect>
             </div>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
@@ -73,6 +73,9 @@ export default {
         },
         customClass: {
             type: String
+        },
+        customStyle: {
+            type: Object
         },
         disabled: {
             type: Boolean
