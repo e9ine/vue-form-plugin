@@ -1,78 +1,93 @@
 .flatpickr-calendar {
 	margin-top: 0.5rem;
 	border-radius: $form-border-radius;
-
+	​
 	.flatpickr-months {
 		padding: 0.5rem;
-
+		​
 		.flatpickr-prev-month {
 			left: 0.5rem;
 		}
-
+		​
 		.flatpickr-next-month {
 			right: 0.5rem;
 		}
-
+		​
 		.flatpickr-next-month,
 		.flatpickr-prev-month {
-			border-radius: 50%;
-			box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+			// border-radius: 50%;
+			// box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
 			top: 0.5rem;
 			height: auto;
-
+			​
 			svg {
 				display: block;
 				margin: 0 auto;
 			}
-
+			​
 			&:hover {
 				svg {
 					fill: $form-active;
 				}
 			}
 		}
-
+		​
 		.numInputWrapper {
 			margin-left: 0.5rem;
-		}
+			.cur-year{
+				font-weight: $font-weight-medium;
+				color:$dark;
 
+			}
+			&:hover{
+				background: none;
+			}
+		}
+		​
 		.flatpickr-current-month {
 			.cur-month {
 				color: $form-active;
 			}
+			.flatpickr-monthDropdown-months{
+				font-weight: $font-weight-medium;
+				color:$dark;
+				&:hover{
+					background: none;
+				}
+			}
 		}
 	}
-
+	​
 	.flatpickr-rContainer {
 		.flatpickr-days {
 			.dayContainer {
 				padding: 0.25rem;
 			}
 		}
-
+		​
 		.flatpickr-day {
 			border: none;
 			border-radius: 6px;
 			background-color: $light;
 			margin: 2px 0 2px;
 			color: $form-text;
-
+			​
 			&.selected {
 				background-color: $form-active;
 				color: $white;
 				font-weight: $font-weight-bold;
 			}
-
+			​
 			&:hover:not(.flatpickr-disabled) {
 				background-color: $form-active !important;
 				color: $white !important;
 			}
-
+			​
 			&.flatpickr-disabled {
 				background: none !important;
 				color: $grey;
 			}
-
+			​
 			&.nextMonthDay,
 			&.prevMonthDay {
 				visibility: hidden !important;

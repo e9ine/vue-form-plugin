@@ -88,6 +88,9 @@ export default {
             }
         },
         toggleSuggestion(val) {
+            if (!val) {
+                this.$emit('touched');
+            }
             this.isOpen = val;
             if (!val) {
                 this.filteredSuggestion = null;

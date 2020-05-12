@@ -14,7 +14,7 @@
         <FieldFor type="Phone" :value.sync="phone" label="Phone" display-mode="EDIT"></FieldFor>
         <FieldFor type="Select" :value.sync="gender" :select-from="genders" label="Gender" display-mode="EDIT"></FieldFor>
         <FieldFor type="Date" :value.sync="birthDate" label="Birth Date" display-mode="EDIT"></FieldFor>
-        <FieldFor type="Select" :value.sync="vitamin" label="Vitamin" display-mode="EDIT" :select-from="vitamins" :show-avatar="true" avatar-prop="ImageUrl"></FieldFor>
+        <FieldFor type="MultiSelect" :multiple="true" :value.sync="vitamin" label="Vitamin" display-mode="EDIT" :select-from="vitamins" :show-avatar="true" avatar-prop="ImageUrl"></FieldFor>
 
         <h3>FormFor Level 1</h3>
         <br />
@@ -68,6 +68,13 @@ export default {
                     _id: '2',
                     Name: 'Mango',
                     Description: 'A mango is a juicy stone fruit produced from numerous species of tropical trees.',
+                    Vitamin: 'C',
+                    ImageUrl: 'https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-mango.jpg'
+                },
+                {
+                    _id: '3',
+                    Name: 'Apple',
+                    Description: 'An Apple is a juicy stone fruit produced from numerous species of tropical trees.',
                     Vitamin: 'C',
                     ImageUrl: 'https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-mango.jpg'
                 }

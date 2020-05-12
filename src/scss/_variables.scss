@@ -55,19 +55,7 @@ $line-color: $light-grey !default;
 ------------------------------------
 */
 
-// Create a Sass map of pre-defined typographic scales, $type-scales, according to the model found on type-scale.com. 
-$type-scales: (minor-second: 1.067,
-  major-second: 1.125,
-  minor-third: 1.200,
-  major-third: 1.250,
-  perfect-fourth: 1.333,
-  augmented-fourth: 1.414,
-  perfect-fifth: 1.500,
-  golden-ratio: 1.618);
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
-$font-family-heading: 'Inter',
-sans-serif !default;
 $font-family-body: 'Inter',
 sans-serif !default;
 $font-weight-light: 300 !default;
@@ -77,15 +65,8 @@ $font-weight-bold: 700 !default;
 $font-size-base: 1rem !default;
 $font-weight-base: $font-weight-regular !default;
 $line-height-base: 1.5 !default;
-$headings-type-scale: major-second !default;
-$headings-font-weight: 700 !default;
-$headings-line-height: 1.2 !default;
-$paragraph-margin-bottom: 1rem !default;
-$lead-font-size: $font-size-base * 1.25 !default;
-$lead-font-weight: 500 !default;
 $small-font-size: 80% !default;
-$headings-text:$dark !default;
-$headings-margin-bottom:0.5rem !default;
+
 
 /* Default Styles
 ------------------------------------
@@ -94,8 +75,6 @@ $border-radius: 4px !default;
 $default-content-padding: 16px;
 $border-width: 1px !default;
 $box-shadow:0 0 6px 0 rgba(0, 0, 0, .2) !default;
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold: 200 !default;
 
 
 /* Link Style
@@ -104,24 +83,6 @@ $yiq-contrasted-threshold: 200 !default;
 $link-color: $brand-primary !default;
 $link-decoration: none !default;
 $link-hover-color: darken($link-color, 15%) !default;
-
-
-/* Buttons
-------------------------------------
-*/
-$btn-border-radius: $border-radius !default;
-$button-colors:("primary": $brand-primary,
-  "secondary": $brand-secondary,
-  "tertiary": $brand-tertiary,
-  "success": $success,
-  "info": $info,
-  "warning": $warning,
-  "danger": $danger,
-  "light": $light,
-  "dark": $dark,
-);
-$enable-button-box-shadows: false !default;
-$btn-border-width:$border-width;
 
 
 /* Form Styles
@@ -134,6 +95,7 @@ $form-bg:$white !default;
 $form-text: $dark-grey !default;
 $form-border-color: $line-color !default;
 $form-primary: $brand-primary;
-$form-error: $error;
 $form-active: $brand-primary;
+$form-error: $error;
+$form-success: $success;
 

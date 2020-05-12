@@ -117,7 +117,8 @@ export const FieldMixin = {
             component: null,
             property: {},
             error: '',
-            invalid: false
+            invalid: false,
+            touched: false
         };
     },
     methods: {
@@ -139,7 +140,6 @@ export const FieldMixin = {
                     });
                 }
                 this.$parent.invalid = this.$parent.errors.length !== 0;
-
                 // emit the changes
                 this.$emit('changed', this.property.value);
             } else {

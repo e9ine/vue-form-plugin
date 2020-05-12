@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
-    <title>icon</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Signup-Copy" transform="translate(-1000.000000, -421.000000)" fill="#888" fill-rule="nonzero">
-            <g id="Group-4-Copy-2" transform="translate(779.000000, 382.000000)">
-                <g id="icon" transform="translate(221.000000, 39.000000)">
-                    <path d="M18.0883333,5.12166667 C19.0183333,5.12166667 19.7716667,4.37333333 19.7716667,3.44166667 L19.7716667,1.68333333 C19.7716667,0.750833333 19.0191667,0 18.0883333,0 C17.1575,0 16.4058333,0.75 16.4058333,1.68333333 L16.4058333,3.4425 C16.4066667,4.37333333 17.1583333,5.12166667 18.0883333,5.12166667 Z" id="Path"></path>
-                    <path d="M24.0683333,2.91166667 L20.68,2.91166667 L20.68,3.7675 C20.68,5.18 19.5325,6.33083333 18.1175,6.33083333 C16.7008333,6.33083333 15.5558333,5.18 15.5558333,3.7675 L15.5558333,2.91166667 L8.71833333,2.91166667 L8.71833333,3.7675 C8.71833333,5.18 7.56916667,6.33083333 6.155,6.33083333 C4.74083333,6.33083333 3.5925,5.18083333 3.5925,3.7675 L3.5925,2.91166667 L0.173333333,2.86916667 L0.173333333,24.2675 L1.88333333,24.2675 L22.3866667,24.2675 L24.0941667,24.2625 L24.0683333,2.91166667 Z M22.385,22.5633333 L1.88333333,22.5633333 L1.88333333,8.89333333 L22.3866667,8.89333333 L22.3866667,22.5633333 L22.385,22.5633333 Z" id="Shape"></path>
-                    <path d="M6.12833333,5.12166667 C7.05833333,5.12166667 7.8125,4.37333333 7.8125,3.44166667 L7.8125,1.68333333 C7.8125,0.75 7.05833333,0 6.12833333,0 C5.19833333,0 4.44666667,0.75 4.44666667,1.68333333 L4.44666667,3.4425 C4.44666667,4.37333333 5.1975,5.12166667 6.12833333,5.12166667 Z" id="Path"></path>
-                    <rect id="Rectangle" x="8.72333333" y="10.7275" width="2.6925" height="2.37666667"></rect>
-                    <rect id="Rectangle" x="13.0766667" y="10.7275" width="2.695" height="2.37666667"></rect>
-                    <rect id="Rectangle" x="17.1141667" y="10.7275" width="2.6925" height="2.37666667"></rect>
-                    <rect id="Rectangle" x="8.72333333" y="14.6741667" width="2.6925" height="2.375"></rect>
-                    <rect id="Rectangle" x="13.0766667" y="14.6741667" width="2.695" height="2.375"></rect>
-                    <rect id="Rectangle" x="17.1141667" y="14.6741667" width="2.6925" height="2.375"></rect>
-                    <rect id="Rectangle" x="8.72333333" y="18.6991667" width="2.6925" height="2.375"></rect>
-                    <rect id="Rectangle" x="4.44666667" y="14.6741667" width="2.69083333" height="2.375"></rect>
-                    <rect id="Rectangle" x="4.44666667" y="18.6991667" width="2.69083333" height="2.375"></rect>
-                    <rect id="Rectangle" x="13.0766667" y="18.6991667" width="2.695" height="2.375"></rect>
-                    <rect id="Rectangle" x="17.1141667" y="18.6991667" width="2.6925" height="2.375"></rect>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component/Pickers/Date/Normal" transform="translate(-19.000000, -35.000000)" stroke="#B5B5BE" stroke-width="1.5">
+            <g id="Component/Forms/Medium/Normal">
+                <g id="Inputs/-Normal">
+                    <g id="Group-11">
+                        <g id="Group-18">
+                            <g id="Element/Form/Normal">
+                                <g id="Group" transform="translate(20.000000, 36.000000)">
+                                    <path d="M1,2 L15,2 C15.5522847,2 16,2.44771525 16,3 L16,15 C16,15.5522847 15.5522847,16 15,16 L1,16 C0.44771525,16 6.76353751e-17,15.5522847 0,15 L0,3 C-6.76353751e-17,2.44771525 0.44771525,2 1,2 Z" id="Rectangle-Copy-3" transform="translate(8.000000, 9.000000) scale(1, -1) translate(-8.000000, -9.000000) "></path>
+                                    <line x1="11" y1="12.5" x2="13" y2="12.5" id="Line-Copy"></line>
+                                    <line x1="7" y1="12.5" x2="9" y2="12.5" id="Line-Copy-2"></line>
+                                    <line x1="3" y1="12.5" x2="5" y2="12.5" id="Line-Copy-3"></line>
+                                    <line x1="11" y1="8.5" x2="13" y2="8.5" id="Line-Copy-4"></line>
+                                    <line x1="3" y1="8.5" x2="5" y2="8.5" id="Line-Copy-5"></line>
+                                    <line x1="7" y1="8.5" x2="9" y2="8.5" id="Line-Copy-6"></line>
+                                    <line x1="4" y1="0.5" x2="4" y2="1.5" id="Line-2-Copy" stroke-linecap="square"></line>
+                                    <line x1="12" y1="0.5" x2="12" y2="1.5" id="Line-2-Copy-2" stroke-linecap="square"></line>
+                                    <line x1="-2.49800181e-16" y1="5" x2="16" y2="5" id="Line-Copy-7"></line>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
                 </g>
             </g>
         </g>

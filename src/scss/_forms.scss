@@ -6,11 +6,14 @@ input[type="password"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background-color: $white;
+
 	&::placeholder {
 		color: $grey;
 	}
 }
+
 input[type="number"] {
+
 	&::-webkit-outer-spin-button,
 	&::-webkit-inner-spin-button {
 		-webkit-appearance: none;
@@ -21,6 +24,7 @@ input[type="number"] {
 .form-group {
 	margin-bottom: 1rem;
 	position: relative;
+
 	label {
 		width: auto;
 		display: block;
@@ -32,15 +36,18 @@ input[type="number"] {
 		margin-bottom: 0.5rem;
 		text-align: left;
 	}
+
 	.allowclear {
-		float:right;
+		float: right;
 		margin-top: -1.5rem;
+
 		i {
 			font-size: 1.25rem;
 			color: $form-error;
 			cursor: pointer;
 		}
 	}
+
 	.form-control {
 		width: 100%;
 		border-radius: $form-border-radius;
@@ -54,57 +61,81 @@ input[type="number"] {
 		background-image: none;
 		border: $form-border-width solid $form-border-color;
 		-webkit-appearance: none;
-		transition:border-color .15s ease-in-out;
+		transition: border-color .15s ease-in-out;
+		&-icon{
+			background-repeat: no-repeat;
+			background-size: 1.5rem;
+			background-position: left 0.875rem center;
+			padding-left: 2.625rem;
+		}
+		&-no-border{
+			border:0;
+			border-bottom: $form-border-width solid $form-border-color;
+			border-radius: 0;
+		}
+
 		&:focus {
 			outline: none;
 			border-color: $form-active;
+			color:$dark;
 		}
+
 		&::-webkit-input-placeholder {
 			/* Chrome/Opera/Safari */
 			text-transform: capitalize;
 			color: $grey;
 			font-weight: 400;
 		}
+
 		&::-moz-placeholder {
 			/* Firefox 19+ */
 			color: $grey;
 			text-transform: capitalize;
 			font-weight: 400;
 		}
+
 		&:-ms-input-placeholder {
 			/* IE 10+ */
 			color: $grey;
 			text-transform: capitalize;
 			font-weight: 400;
 		}
+
 		&:-moz-placeholder {
 			/* Firefox 18- */
 			color: $grey;
 			text-transform: capitalize;
 			font-weight: 400;
 		}
+
 		&.no-border {
 			border: none;
 		}
+
 		&.datepicker {
 			background-image: url('../assets/images/datepicker.svg');
 			background-repeat: no-repeat;
 			background-size: 1.5rem;
 			background-position: right 0.875rem center;
 		}
+
 		&:disabled {
 			background-color: $light;
+			color:$grey;
 			cursor: not-allowed;
 		}
+
 		&::-webkit-inner-spin-button,
 		&::-webkit-outer-spin-button {
 			-webkit-appearance: none;
 			margin: 0;
 		}
 	}
-	.form-element{
+
+	.form-element {
 		position: relative;
 	}
+
 	.form-control-static {
 		font-weight: $font-weight-medium;
 		font-size: 1rem;
@@ -112,15 +143,18 @@ input[type="number"] {
 		line-height: 40px;
 		margin-top: 0;
 		margin-bottom: 0;
+
 		&.pre {
 			white-space: pre-wrap;
 		}
 	}
+
 	textarea {
 		width: 100%;
 		height: auto !important;
 		resize: none;
 	}
+
 	select {
 		padding-top: 8px !important;
 		padding-bottom: 8px !important;
@@ -138,47 +172,67 @@ input[type="number"] {
 		background-position: right 13px center;
 		box-shadow: none;
 		-webkit-appearance: none;
+
 		&:focus {
 			outline: none;
 		}
 	}
+
 	.validation-message {
 		margin-top: 0.5rem;
 		color: $grey;
 		text-align: left;
 		font-size: 0.75rem;
 	}
+
 	.vue-tel-input {
 		width: 100%;
+
 		&:focus-within {
 			box-shadow: none;
 			border-color: $form-active;
+			color:$dark;
 		}
-		.vti__dropdown-list,.vti__dropdown {
+
+		.vti__dropdown-list,
+		.vti__dropdown {
 			&:focus {
 				outline: 0 !important;
 			}
 		}
-		.vti__dropdown{
+
+		.vti__dropdown {
 			border-top-left-radius: $form-border-radius;
 			border-bottom-left-radius: $form-border-radius;
 		}
-		.vti__dropdown-list{
+
+		.vti__dropdown-list {
 			border-radius: $form-border-radius;
 			border: $form-border-width solid $form-border-color;
-			margin-top: 0.25rem;
+			margin-top: 0.5rem;
+			color: $form-text;
 		}
+
 		.vti__input {
 			background-color: $form-bg;
 			border-radius: 0 $form-border-radius $form-border-radius 0;
+			color:$form-text;
+			&:focus {
+				box-shadow: none;
+				border-color: $form-active;
+				color:$dark;
+
+			}
 		}
 	}
+
 	.intellisense {
 		display: none;
+
 		&.visible {
 			z-index: 1;
 			position: absolute;
-			top:1px;
+			top: 1px;
 			left: 0;
 			bottom: 0;
 			height: 40px;
@@ -193,6 +247,7 @@ input[type="number"] {
 
 		}
 	}
+
 	.intellisense-help {
 		position: absolute;
 		right: .75rem;
@@ -203,21 +258,25 @@ input[type="number"] {
 		display: flex;
 		align-items: center;
 		font-size: 0.875rem;
+
 		i {
 			font-size: 1rem;
 			margin-right: 0.25rem;
 		}
 	}
-	.input-group{
+
+	.input-group {
 		position: relative;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: stretch;
 		width: 100%;
-		.input-group-prepend{
+
+		.input-group-prepend {
 			margin-right: -1px;
 			display: flex;
-			.input-group-text{
+
+			.input-group-text {
 				display: flex;
 				align-items: center;
 				padding: .375rem .75rem;
@@ -233,130 +292,99 @@ input[type="number"] {
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
 			}
-			
+
 		}
-		.form-control{
+
+		.form-control {
 			position: relative;
 			flex: 1 1 auto;
 			width: 1%;
 			margin-bottom: 0;
-			&:not(:first-child){
+
+			&:not(:first-child) {
 				border-top-left-radius: 0;
 				border-bottom-left-radius: 0;
 			}
 		}
 	}
+
+	&.form-active {
+		.form-control {
+			border-color: $form-active;
+			color: $dark;
+		}
+	}
+
+	&.form-filled {
+		.form-control {
+			border-color: $grey;
+		}
+	}
+
+	&.form-error {
+		.form-control {
+			border-color: $form-error;
+		}
+
+		.validation-message {
+			color: $form-error;
+		}
+	}
+
+	&.form-success {
+		.form-control {
+			border-color: $form-success;
+		}
+
+	}
+
 }
-// input[type="file"] {
-//     width: 100%;
-//     outline: 0 !important;
-//     margin-top: 4px;
-//     margin-bottom: 10px;
-//     height: 36px;
-//     &::-webkit-file-upload-button {
-//         visibility: hidden !important;
-//         -webkit-appearance: none;
-//     }
-//     &::before {
-//         content: 'Choose File';
-//         display: inline-block;
-//         background-color: $form-primary;
-//         border-radius: 6px;
-//         line-height: 36px;
-//         height: 36px;
-//         outline: none;
-//         white-space: nowrap;
-//         -webkit-user-select: none;
-//         color: #fff;
-//         cursor: pointer;
-//         font-weight: 400;
-//         font-size: 13px;
-//         outline: 0 !important;
-// 		padding: 0 12px;
-//     }
-//     &:hover {
-//         &::before {
-//             border-color: black;
-//         }
-//     }
-// }
 
 .form-horizontal {
-	.left-border {
-		border-left: 4px solid transparentize(#f4f6fb, 0.2);
-		border-radius: 2px;
-		@media (max-width: 767px) {
-			border-left: none;
-		}
-	}
-	.form-group-view {
-		.form-group {
-			&:nth-child(2n) {
-				background-color: mix(#fff, $grey,10%);
-			}
-			margin-bottom: 0 !important;
-			margin-right: 8px;
-			margin-left: -8px;
-			>div {
-				padding: 4px 4px 4px 8px;
-			}
-			.form-control-static {
-				padding-right: 8px;
-			}
-		}
-	}
 	.form-group {
-		// &.material {
-		// 	label {
-		// 		display: inline-block;
-		// 	}
-		// }
-		> div {
+		>div {
 			width: 100%;
 			display: flex;
 			align-items: center;
-			// &:after{
-			// 	content: "";
-			// 	clear: both;
-			// 	display: table;
-			// }
 		}
+
 		label {
 			float: left;
 			width: 30%;
 			margin-bottom: 0;
 		}
+
 		.form-element {
 			float: left;
 			position: relative;
 			width: 70%;
-			// &:after {
-			// 	clear: both;
-			// }
-			// .form-control {
-			// 	text-align: left;
-			// }
 		}
+
 		.validation-message {
 			margin-left: 30%;
 			width: 70%;
 		}
+
 		.form-control-static {
 			float: left;
 			width: 70%;
-			// margin-bottom: 0;
 			text-align: right;
 		}
+
 		input[type="number"] {
 			text-align: right !important;
 		}
+
 		.multiselect {
-			&__single,&__option {
+
+			&__single,
+			&__option {
 				text-align: left;
 			}
 
 		}
 	}
+
 	.checkbox {
 		.form-element {
 			.check-label {
@@ -364,43 +392,8 @@ input[type="number"] {
 			}
 		}
 	}
+
 	.clearfix {
 		display: none;
-	}
-}
-@media print {
-	body * {
-		visibility: hidden;
-		.content-wrapper {
-			overflow-x: visible !important;
-			overflow-y: visible !important;
-			margin-left: 0 !important;
-			margin-top: 0 !important;
-		}
-	}
-	#app {
-		overflow: visible !important;
-	}
-	#pdf-report,
-	#pdf-report * {
-		visibility: visible;
-		-webkit-print-color-adjust: exact;
-	}
-	#pdf-report {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		.print-info {
-			display: block !important;
-			margin-bottom: 16px;
-		}
-		i {
-			display: none;
-		}
-		.category {
-			margin-bottom: 16px;
-		}
 	}
 }

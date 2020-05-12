@@ -1,25 +1,20 @@
 .multiple {
   .multiselect {
-    &__select {
-      &:before {
-        top: 70%;
-      }
-    }
-    &__tags {
-      min-height: auto;
-      max-height: 100px;
-      padding-top: 6px;
-      overflow:scroll;
-      border-color: $form-border-color;
+    &__tags-wrap{
+      display: block;
+      line-height: 1;
     }
     &__tag {
       background: $form-primary;
+      font-size: 0.875rem;
+      margin-right: 0.5rem;
+      margin-top: 2px;
       &-icon {
         &:hover {
             background: mix(#000, $form-primary, 10%);
         }
         &:after {
-            color: #ddd;
+            color: $light;
         }
       }
     }
@@ -32,47 +27,51 @@
         background: transparent !important;
       }
     }
-    &__input {
-      width: auto !important;
-      min-height: 22px;
-      line-height: 22px;
-    }
-    &__tags {
-      border-color: $form-border-color;
+    &__single{
+      padding-left: 0;
+       margin-bottom: 0;
+       line-height: 1.5;
     }
   }
 }
 .multiselect {
-  
+  font-size: 1rem;
+  &__tags {
+    padding: 0.375rem 40px 0 0.75rem;
+    font-size: 1rem;
+    border-color: $form-border-color;
+    border-radius: $form-border-radius;
+  }
+  &__placeholder{
+    margin:0;
+    padding:0;
+    color:$grey;
+  }
     &__content-wrapper {
-    //max-height: 200px !important;
     min-height: auto;
   }
   &__option{
     background: none;
-    color: $grey;
+    color: $form-text;
     display: flex;
     align-items: center;
     &:hover {
-      background-color: $grey
+      background-color: $light;
+      color:$dark;
     }
-    .image {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: inline-block;
-      background-size: cover;
-      margin-right: 16px;
-      background-position: center center;
+    .avatar{
+      margin-right: 0.5rem;
     }
     .description {
       display: inline-block;
       .title {
         font-size: 14px;
-        color: $grey;
+        font-weight: $font-weight-medium;
+        color: $form-text;
       }
       small {
         font-size: 12px;
+        color:$grey;
       }
     }
     &--selected.multiselect__option--highlight {

@@ -4,19 +4,23 @@
             <slot name="label"></slot>
         </template>
         <label v-else class="control-label" :for="label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
-        <br class="clearfix" />
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
             <div v-if="multiple && typeof items[0] === 'object'" class="multiple">
                 <multiselect v-model="selected" :options="items" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @close="handler" @remove="remove">
                     <template slot="option" slot-scope="props">
-                        <!-- Avatar -->
-                        <div class="description">
-                            <div class="title">
-                                {{ props.option.Name }}
+                        <div v-if="optionTemplate && optionTemplate.length > 0 && props && props.option">
+                            <v-runtime-template :template="optionTemplate" :template-props="{ props }"></v-runtime-template>
+                        </div>
+                        <div v-else class="d-flex align-items-center">
+                            <img class="profile" v-if="showAvatar" :src="props.option[avatarProp]" :alt="props.option.Name" loading="lazy" />
+                            <div class="description">
+                                <div class="title">
+                                    {{ props.option.Name }}
+                                </div>
+                                <small class="text-muted" v-if="props.option.Description">
+                                    {{ props.option.Description }}
+                                </small>
                             </div>
-                            <small class="text-muted" v-if="props.option.Description">
-                                {{ props.option.Description }}
-                            </small>
                         </div>
                     </template>
                 </multiselect>
@@ -34,6 +38,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
+import VRuntimeTemplate from 'v-runtime-template';
 export default {
     name: 'MultiSelectField',
     props: {
@@ -106,7 +111,8 @@ export default {
         }
     },
     components: {
-        Multiselect
+        Multiselect,
+        VRuntimeTemplate
     },
     data() {
         return {
@@ -193,4 +199,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.profile {
+    display: inline-block;
+    margin-right: 8px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+</style>
