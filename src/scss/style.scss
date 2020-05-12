@@ -1,6 +1,8 @@
-@import '~flatpickr/dist/flatpickr.css';
 @import "~vue-multiselect/dist/vue-multiselect.min.css";
+@import '~flatpickr/dist/flatpickr';
 @import "variables";
+@import "base";
+@import "reboot";
 @import "forms";
 @import "select";
 @import "calendar";

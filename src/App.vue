@@ -9,7 +9,7 @@
             </template>
         </FieldFor>
         <FieldFor type="Textarea" :value.sync="description" label="Description" display-mode="EDIT"></FieldFor>
-        <FieldFor type="Number" :value.sync="age" label="Age" display-mode="EDIT"></FieldFor>
+        <FieldFor type="Number" prepend="£" :value.sync="age" label="Age" display-mode="EDIT"></FieldFor>
         <FieldFor type="Boolean" :value.sync="bool" label="Yes" display-mode="EDIT"></FieldFor>
         <FieldFor type="Phone" :value.sync="phone" label="Phone" display-mode="EDIT"></FieldFor>
         <FieldFor type="Select" :value.sync="gender" :select-from="genders" label="Gender" display-mode="EDIT"></FieldFor>
