@@ -67,7 +67,7 @@ export default {
         // Custom way
         if (this.type) {
             this.component = mapping[this.type];
-        } else if (this.schema) {
+        } else if (this.$parent.schema) {
             // Model service way
             let prop = this.$parent.schema[this.field];
             if (prop === undefined) {
