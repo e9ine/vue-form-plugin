@@ -1,5 +1,5 @@
 <template>
-    <div class="form-group" :class="[{ 'form-filled': value !== undefined && showValidationIndicators }, { 'form-error': touched && invalid && showValidationIndicators }, { 'form-success': touched && !invalid && showValidationIndicators }]">
+    <div class="form-group" :class="[{ 'form-filled': value !== undefined && value !== '' && showValidationIndicators }, { 'form-error': touched && invalid && showValidationIndicators }, { 'form-success': touched && !invalid && showValidationIndicators }]">
         <component :is="component" v-bind="$props" :attrs="$attrs" :value="value" :display-mode="displayMode ? displayMode : $parent.displayMode" :property="property" @updateValue="sendValue" @touched="touched = true">
             <template v-slot:label v-if="$slots.label">
                 <slot name="label"></slot>

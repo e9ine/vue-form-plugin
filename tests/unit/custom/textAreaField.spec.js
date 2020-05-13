@@ -145,4 +145,17 @@ describe('TextareaField.vue', () => {
         await Vue.nextTick();
         expect(wrapper.find('p').text()).toBe('-');
     });
+
+    it('should show a hyphen if value is blank in view mode', async () => {
+        wrapper = mount(FieldFor, {
+            propsData: {
+                value: '',
+                placeholder: 'Start typing here...',
+                type: 'Textarea',
+                displayMode: 'VIEW'
+            }
+        });
+        await Vue.nextTick();
+        expect(wrapper.find('p').text()).toBe('-');
+    });
 });

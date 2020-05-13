@@ -6,7 +6,7 @@
         <label v-else class="control-label" :for="label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
             <div v-if="typeof items[0] === 'object'" class="multiple">
-                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @close="handler" @remove="remove">
+                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @open="$emit('touched')" @close="handler" @remove="remove">
                     <template slot="option" slot-scope="props">
                         <div v-if="optionTemplate && optionTemplate.length > 0 && props && props.option">
                             <v-runtime-template :template="optionTemplate" :template-props="{ props }"></v-runtime-template>
@@ -26,7 +26,7 @@
                 </multiselect>
             </div>
             <div v-else-if="typeof items[0] === 'string'" class="multiple">
-                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @close="handler" @remove="remove"></multiselect>
+                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @open="$emit('touched')" @close="handler" @remove="remove"></multiselect>
             </div>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
@@ -141,17 +141,12 @@ export default {
             this.$emit('updateValue', this.clonedValue);
         },
         validate() {
-            if (this.property) {
-                if (this.property.required && !this.clonedValue.value && !this.multiple) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'required';
-                } else if (this.property.required && !this.clonedValue.value.length && this.multiple) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'required';
-                } else {
-                    this.clonedValue.$invalid = false;
-                    this.clonedValue.$error = null;
-                }
+            if ((this.required ?? this.property?.required) && !this.clonedValue.value.length) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'required';
+            } else {
+                this.clonedValue.$invalid = false;
+                this.clonedValue.$error = null;
             }
         }
     },
@@ -183,7 +178,7 @@ export default {
             // check if any external objects exist in the list  via select from
             if (this.value) {
                 this.selected = this.selectFrom.filter(item => item[this.valueField || '_id'] === this.value);
-            } else if (this.property && this.property.value) {
+            } else if (this.property?.value) {
                 this.selected = this.selectFrom.filter(item => this.property.value.indexOf(item[this.valueField || '_id']) > -1);
             } else {
                 this.selected = [];
@@ -191,7 +186,7 @@ export default {
         } else {
             if (this.value) {
                 this.selected = Array.isArray(this.value) ? this.value : [this.value];
-            } else if (this.property && this.property.value) {
+            } else if (this.property?.value) {
                 this.selected = Array.isArray(this.value) ? this.property.value : [this.property.value];
             } else {
                 this.selected = [];

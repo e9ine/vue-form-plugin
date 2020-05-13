@@ -9,7 +9,7 @@
                 <span class="allowclear" v-if="allowClear && displayMode !== 'VIEW' && clonedValue.value" @click="clearSelected">
                     <i class="material-icons">close</i>
                 </span>
-                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" open-direction="bottom" :track-by="valueField || '_id'" :label="displayField || 'Name'" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :hide-selected="true" :disabled="disabled" :placeholder="placeholder" :allow-empty="allowClear" @close="handler">
+                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" open-direction="bottom" :track-by="valueField || '_id'" :label="displayField || 'Name'" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :hide-selected="true" :disabled="disabled" :placeholder="placeholder" :allow-empty="allowClear" @open="$emit('touched')" @close="handler">
                     <template slot="option" slot-scope="props">
                         <div v-if="optionTemplate && optionTemplate.length > 0 && props && props.option">
                             <v-runtime-template :template="optionTemplate" :template-props="{ props }"></v-runtime-template>
@@ -32,7 +32,7 @@
                 <span class="allowclear" v-if="allowClear && displayMode !== 'VIEW' && clonedValue.value" @click="clearSelected">
                     <i class="material-icons">close</i>
                 </span>
-                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" open-direction="bottom" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :disabled="disabled" :hide-selected="true" :placeholder="placeholder" @close="handler"> </multiselect>
+                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" open-direction="bottom" :searchable="!!searchable" :close-on-select="true" select-label="" deselect-label="" :disabled="disabled" :hide-selected="true" :placeholder="placeholder" @open="$emit('touched')" @close="handler"> </multiselect>
             </div>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
@@ -157,14 +157,12 @@ export default {
             this.$emit('updateValue', this.clonedValue);
         },
         validate() {
-            if (this.property) {
-                if ((this.required || this.property.required) && !this.clonedValue.value) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'required';
-                } else {
-                    this.clonedValue.$invalid = false;
-                    this.clonedValue.$error = null;
-                }
+            if ((this.required ?? this.property?.required) && !this.clonedValue.value) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'required';
+            } else {
+                this.clonedValue.$invalid = false;
+                this.clonedValue.$error = null;
             }
         }
     },
@@ -198,7 +196,7 @@ export default {
             // check if any external objects exist in the list  via select from
             if (this.value) {
                 this.selected = this.selectFrom.find(item => item[this.valueField || '_id'] === this.value);
-            } else if (this.property && this.property.value) {
+            } else if (this.property?.value) {
                 this.selected = this.selectFrom.find(item => item[this.valueField || '_id'] === this.property.value);
             } else {
                 this.selected = undefined;

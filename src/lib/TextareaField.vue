@@ -54,6 +54,9 @@ export default {
         rows: {
             type: Number
         },
+        maxlength: {
+            type: Number
+        },
         property: {
             type: Object
         },
@@ -64,7 +67,7 @@ export default {
     data() {
         return {
             clonedValue: {
-                value: this.value ?? this.property.value
+                value: this.value ?? this.property?.value
             }
         };
     },
@@ -74,20 +77,18 @@ export default {
             this.$emit('updateValue', this.clonedValue);
         },
         validate() {
-            if (this.property) {
-                if ((this.required ?? this.property.required) && !this.clonedValue.value) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'required';
-                } else if (this.regex && !this.clonedValue.value.test(this.regex)) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'regex';
-                } else if (this.property.maxlength && (!this.clonedValue.value || this.clonedValue.value.length > this.property.maxlength)) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'length';
-                } else {
-                    this.clonedValue.$invalid = false;
-                    this.clonedValue.$error = null;
-                }
+            if ((this.required ?? this.property?.required) && !this.clonedValue.value) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'required';
+            } else if (this.regex && !this.clonedValue.value.test(this.regex)) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'regex';
+            } else if ((this.maxlength ?? this.property?.maxlength) && this.clonedValue.value.length > (this.maxlength ?? this.property?.maxlength)) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'length';
+            } else {
+                this.clonedValue.$invalid = false;
+                this.clonedValue.$error = null;
             }
         }
     },

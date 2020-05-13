@@ -8,13 +8,14 @@
                 <p style="color: black; font-style: italic">This is custom slot for view mode</p>
             </template>
         </FieldFor>
-        <FieldFor type="Textarea" :value.sync="description" label="Description" display-mode="EDIT"></FieldFor>
+        <FieldFor type="Textarea" :value.sync="description" label="Description" display-mode="EDIT" :maxlength="30" :show-validation-indicators="true"></FieldFor>
         <FieldFor type="Number" prepend="£" :value.sync="age" label="Age" display-mode="EDIT"></FieldFor>
         <FieldFor type="Boolean" :value.sync="bool" label="Yes" display-mode="EDIT"></FieldFor>
-        <FieldFor type="Phone" :value.sync="phone" label="Phone" display-mode="EDIT"></FieldFor>
+        <FieldFor type="Phone" :value.sync="phone" label="Phone" display-mode="EDIT" :show-validation-indicators="true"></FieldFor>
         <FieldFor type="Select" :value.sync="gender" :select-from="genders" label="Gender" display-mode="EDIT"></FieldFor>
         <FieldFor type="Date" :value.sync="birthDate" label="Birth Date" display-mode="EDIT"></FieldFor>
-        <FieldFor type="MultiSelect" :multiple="true" :value.sync="vitamin" label="Vitamin" display-mode="EDIT" :select-from="vitamins" :show-avatar="true" avatar-prop="ImageUrl"></FieldFor>
+        <FieldFor type="MultiSelect" :multiple="true" :value.sync="vitamin" label="Vitamin" display-mode="EDIT" :select-from="vitamins" :show-avatar="true" avatar-prop="ImageUrl" :required="true" :show-validation-indicators="true"></FieldFor>
+        <FieldFor type="Text" :value.sync="email" label="email" display-mode="EDIT" :email="true" :show-validation-indicators="true"></FieldFor>
 
         <h3>FormFor Level 1</h3>
         <br />
@@ -23,7 +24,7 @@
             <p v-if="$refs.form1">Invalid : {{ $refs.form1.invalid }}</p>
             <p v-if="$refs.form1">{{ $refs.form1.errors }}</p>
             <br />
-            <FieldFor field="Name" :required="true" custom-class="form-control-icon" :custom-style="{ 'background-image': 'url(' + require('@/assets/images/datepicker.svg') + ')' }"></FieldFor>
+            <FieldFor field="Name" :required="true" :show-validation-indicators="true" custom-class="form-control-icon" :custom-style="{ 'background-image': 'url(' + require('@/assets/images/datepicker.svg') + ')' }"></FieldFor>
             <FieldFor field="Description"></FieldFor>
             <h3>FormFor Level 2</h3>
             <FormFor :data="project.Address" display-mode="EDIT" ref="form2">
@@ -33,7 +34,7 @@
                 <h3>FormFor Level 3</h3>
                 <FormFor :data="project.Address.Location" display-mode="EDIT">
                     <!-- This is tracked with First Form-For as both share same reference -->
-                    <FieldFor field="Longitude"></FieldFor>
+                    <FieldFor field="Longitude" :show-validation-indicators="true"></FieldFor>
                     <FieldFor field="Latitude"></FieldFor>
                 </FormFor>
             </FormFor>
@@ -79,7 +80,8 @@ export default {
                     ImageUrl: 'https://befreshcorp.net/wp-content/uploads/2017/07/product-packshot-mango.jpg'
                 }
             ],
-            vitamin: ''
+            vitamin: '',
+            email: ''
         };
     },
     mounted() {

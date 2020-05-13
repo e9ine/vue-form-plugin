@@ -65,6 +65,13 @@ export default {
         regex: {
             type: String
         },
+        email: {
+            type: Boolean,
+            default: undefined
+        },
+        maxlength: {
+            type: Number
+        },
         property: {
             type: Object
         },
@@ -107,27 +114,22 @@ export default {
             }
         },
         validate() {
-            if (this.property) {
-                if ((this.required ?? this.property.required) && !this.clonedValue.value) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'required';
-                    // eslint-disable-next-line
-                } else if (this.property.email && !/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(this.clonedValue.value)) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'email';
-                } else if (this.property.regex && !this.clonedValue.value.test(this.property.regex)) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'regex';
-                } else if (this.regex && !this.clonedValue.value.test(this.regex)) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'regex';
-                } else if (this.property.maxlength && (!this.clonedValue.value || this.clonedValue.value > this.property.maxlength)) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'length';
-                } else {
-                    this.clonedValue.$invalid = false;
-                    this.clonedValue.$error = null;
-                }
+            if ((this.required ?? this.property?.required) && !this.clonedValue.value) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'required';
+                // eslint-disable-next-line
+            } else if ((this.email ?? this.property?.email) && !/^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(this.clonedValue.value)) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'email';
+            } else if ((this.regex ?? this.property?.regex) && !this.clonedValue.value.test(this.regex ?? this.property?.regex)) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'regex';
+            } else if ((this.maxlength ?? this.property?.maxlength) && (!this.clonedValue.value || this.clonedValue.value > (this.maxlength ?? this.property?.maxlength))) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'length';
+            } else {
+                this.clonedValue.$invalid = false;
+                this.clonedValue.$error = null;
             }
         }
     },

@@ -5,7 +5,7 @@
         </template>
         <label v-else class="control-label" :for="$attrs.id || label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
-            <vue-tel-input :enabled-flags="showFlags" :dynamic-placeholder="true" default-country="GB" :disabled-fetching-country="true" v-model="clonedValue.value" @input="handler" class="form-control" :country-changed="handler" :class="customClass" :style="customStyle"></vue-tel-input>
+            <vue-tel-input :enabled-flags="showFlags" :dynamic-placeholder="true" default-country="GB" :disabled-fetching-country="true" v-model="clonedValue.value" @input="handler" @blur="$emit('touched')" class="form-control" :country-changed="handler" :class="customClass" :style="customStyle"></vue-tel-input>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
             <slot name="view"></slot>
@@ -71,20 +71,18 @@ export default {
             this.$emit('updateValue', this.clonedValue);
         },
         validate(val, obj) {
-            if (this.property) {
-                if (this.property.required && !this.clonedValue.value) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'required';
-                } else if (!this.property.required && !this.clonedValue.value) {
-                    this.clonedValue.$invalid = false;
-                    this.clonedValue.$error = null;
-                } else if (obj && !obj.isValid) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'phone';
-                } else {
-                    this.clonedValue.$invalid = false;
-                    this.clonedValue.$error = null;
-                }
+            if ((this.required ?? this.property?.required) && !this.clonedValue.value) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'required';
+            } else if (!this.required && !this.property?.required && !this.clonedValue.value) {
+                this.clonedValue.$invalid = false;
+                this.clonedValue.$error = null;
+            } else if (obj && !obj.isValid) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'phone';
+            } else {
+                this.clonedValue.$invalid = false;
+                this.clonedValue.$error = null;
             }
         }
     },

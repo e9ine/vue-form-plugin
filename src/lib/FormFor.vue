@@ -11,9 +11,6 @@ export default {
         displayMode: {
             type: String
         },
-        errorProps: {
-            type: Object
-        },
         data: {}
     },
     data() {

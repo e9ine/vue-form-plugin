@@ -98,14 +98,12 @@ export default {
             this.$emit('updateValue', this.clonedValue);
         },
         validate() {
-            if (this.property) {
-                if ((this.required ?? this.property.required) && !this.clonedValue.value) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'required';
-                } else {
-                    this.clonedValue.$invalid = false;
-                    this.clonedValue.$error = null;
-                }
+            if ((this.required ?? this.property?.required) && !this.clonedValue.value) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'required';
+            } else {
+                this.clonedValue.$invalid = false;
+                this.clonedValue.$error = null;
             }
         }
     },

@@ -91,29 +91,27 @@ export default {
             this.$emit('updateValue', this.clonedValue);
         },
         validate() {
-            if (this.property) {
-                if ((this.required ?? this.property.required) && !this.clonedValue.value && this.clonedValue.value !== 0) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'required';
-                } else if (this.min !== undefined && this.clonedValue.value < this.min) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'min';
-                } else if (this.max !== undefined && this.clonedValue.value > this.max) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'max';
-                } else if (this.property.min !== undefined && this.clonedValue.value < this.property.min) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'min';
-                } else if (this.property.max !== undefined && this.clonedValue.value > this.property.max) {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'max';
-                } else if (this.clonedValue.value && typeof this.clonedValue.value !== 'number') {
-                    this.clonedValue.$invalid = true;
-                    this.clonedValue.$error = 'regex';
-                } else {
-                    this.clonedValue.$invalid = false;
-                    this.clonedValue.$error = null;
-                }
+            if ((this.required ?? this.property?.required) && !this.clonedValue.value && this.clonedValue.value !== 0) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'required';
+            } else if (this.min !== undefined && this.clonedValue.value < this.min) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'min';
+            } else if (this.max !== undefined && this.clonedValue.value > this.max) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'max';
+            } else if (this.property?.min !== undefined && this.clonedValue.value < this.property.min) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'min';
+            } else if (this.property?.max !== undefined && this.clonedValue.value > this.property.max) {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'max';
+            } else if (this.clonedValue.value && typeof this.clonedValue.value !== 'number') {
+                this.clonedValue.$invalid = true;
+                this.clonedValue.$error = 'regex';
+            } else {
+                this.clonedValue.$invalid = false;
+                this.clonedValue.$error = null;
             }
         }
     },

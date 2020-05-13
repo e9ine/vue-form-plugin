@@ -43,6 +43,10 @@ export const FieldMixin = {
         regex: {
             type: String
         },
+        email: {
+            type: Boolean,
+            default: undefined
+        },
         showSuggestion: {
             type: Boolean,
             default: false
@@ -53,6 +57,9 @@ export const FieldMixin = {
         showValidationIndicators: {
             type: Boolean,
             default: false
+        },
+        maxlength: {
+            type: Number
         },
         // input[type=number]
         min: {
@@ -125,17 +132,17 @@ export const FieldMixin = {
             property: {},
             error: '',
             invalid: false,
-            touched: false
+            touched: (this.value || this.property?.value) ?? false
         };
     },
     methods: {
         sendValue(valueObj) {
+            this.invalid = valueObj.$invalid;
+            this.error = valueObj.$error;
             // Model service way
             if (this.property.name) {
                 this.property.value = valueObj.value;
                 this.$set(this.$parent.data, this.property.name, valueObj.value);
-                this.invalid = valueObj.$invalid;
-                this.error = valueObj.$error;
                 let found = this.$parent.errors.findIndex(err => err.name === this.property.name);
                 if (found > -1) {
                     this.$parent.errors.splice(found, 1);
