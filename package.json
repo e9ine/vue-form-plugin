@@ -1,6 +1,6 @@
 {
   "name": "@e9ine/vue-form-plugin",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.5",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "demo": "vue-cli-service build",

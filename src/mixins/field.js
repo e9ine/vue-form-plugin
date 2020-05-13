@@ -132,7 +132,7 @@ export const FieldMixin = {
             property: {},
             error: '',
             invalid: false,
-            touched: (this.value || this.property?.value) ?? false
+            touched: (this.value || (this.property && this.property.value ? this.property.value : false))
         };
     },
     methods: {

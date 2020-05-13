@@ -1303,14 +1303,12 @@
       }
     },
     data: function data() {
-      var _ref, _this$property;
-
       return {
         component: null,
         property: {},
         error: '',
         invalid: false,
-        touched: (_ref = this.value || ((_this$property = this.property) === null || _this$property === void 0 ? void 0 : _this$property.value)) !== null && _ref !== void 0 ? _ref : false
+        touched: this.value || (this.property && this.property.value ? this.property.value : false)
       };
     },
     methods: {
@@ -12911,8 +12909,8 @@
 
   var __vue_inject_styles__$7 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-1cd896bc_0", {
-      source: ".pre[data-v-1cd896bc]{white-space:pre}",
+    inject("data-v-78f4f5e5_0", {
+      source: ".pre[data-v-78f4f5e5]{white-space:pre}",
       map: undefined,
       media: undefined
     });
@@ -12920,7 +12918,7 @@
   /* scoped */
 
 
-  var __vue_scope_id__$7 = "data-v-1cd896bc";
+  var __vue_scope_id__$7 = "data-v-78f4f5e5";
   /* module identifier */
 
   var __vue_module_identifier__$7 = undefined;
