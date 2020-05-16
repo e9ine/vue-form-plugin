@@ -10,7 +10,9 @@
     "build": "npm run build:browser && npm run build:es && npm run build:umd",
     "build:browser": "cross-env NODE_ENV=production rollup --config build/rollup.config.browser.js",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.es.js",
-    "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.umd.js"
+    "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.umd.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "postpublish": "git add CHANGELOG.md && git commit -m 'chore: changelog [ci skip]' && git push"
   },
   "files": [
     "src/assets",
@@ -32,6 +34,7 @@
     "@vue/cli-service": "^4.3.0",
     "@vue/test-utils": "1.0.0-beta.31",
     "babel-eslint": "^10.1.0",
+    "conventional-changelog-cli": "^2.0.31",
     "core-js": "^3.6.4",
     "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
