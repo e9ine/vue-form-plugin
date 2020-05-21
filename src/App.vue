@@ -24,7 +24,7 @@
             <p v-if="$refs.form1">Invalid : {{ $refs.form1.invalid }}</p>
             <p v-if="$refs.form1">{{ $refs.form1.errors }}</p>
             <br />
-            <FieldFor field="Name" :required="true" :show-validation-indicators="true" custom-class="form-control-icon" :custom-style="{ 'background-image': 'url(' + require('@/assets/images/datepicker.svg') + ')' }"></FieldFor>
+            <FieldFor field="Name" :required="true" :show-validation-untouched="true" :show-validation-indicators="true" custom-class="form-control-icon" :custom-style="{ 'background-image': 'url(' + require('@/assets/images/datepicker.svg') + ')' }"></FieldFor>
             <FieldFor field="Description"></FieldFor>
             <h3>FormFor Level 2</h3>
             <FormFor :data="project.Address" display-mode="EDIT" ref="form2">

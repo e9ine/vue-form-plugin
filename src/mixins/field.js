@@ -58,6 +58,10 @@ export const FieldMixin = {
             type: Boolean,
             default: false
         },
+        showValidationUntouched: {
+            type: Boolean,
+            default: false
+        },
         maxlength: {
             type: Number
         },
@@ -132,7 +136,7 @@ export const FieldMixin = {
             property: {},
             error: '',
             invalid: false,
-            touched: (this.value || (this.property && this.property.value ? this.property.value : false))
+            touched: (this.showValidationUntouched || this.value || (this.property && this.property.value ? this.property.value : false))
         };
     },
     methods: {

@@ -322,7 +322,7 @@ input[type="number"] {
 	}
 
 	&.form-error {
-		.form-control,.vti__input,.multiselect__tags {
+		.form-control,.vti__input,.multiselect__tags,.datepicker {
 			border-color: $form-error;
 		}
 
@@ -332,7 +332,7 @@ input[type="number"] {
 	}
 
 	&.form-success {
-		.form-control,.vti__input,.multiselect__tags {
+		.form-control,.vti__input,.multiselect__tags,.datepicker {
 			border-color: $form-success;
 		}
 
