@@ -1,3 +1,22 @@
+# [1.0.0-beta.8](https://git.e9ine.com/sharvilak/vue-form-plugin/compare/1.0.0-beta.6...1.0.0-beta.8) (2020-05-31)
+
+
+### Bug Fixes
+
+* assets error fixed when importing via relative path ([b9dac29](https://git.e9ine.com/sharvilak/vue-form-plugin/commits/b9dac29d17f891ebd81b314627a3047eeef42b6a))
+
+
+### Features
+
+* show-validation-untouched prop added ([cddf677](https://git.e9ine.com/sharvilak/vue-form-plugin/commits/cddf6775de73a77b0e2b7ea2f332fb55074069d6))
+
+
+### Reverts
+
+* Revert "chore(release): 1.0.0" ([ffe7196](https://git.e9ine.com/sharvilak/vue-form-plugin/commits/ffe7196104a87ac957c183d270946d90ad72fca2))
+
+
+
 # 1.0.0-beta.6 (2020-05-16)
 
 
