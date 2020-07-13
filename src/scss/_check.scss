@@ -2,38 +2,47 @@
   display: none;
   box-sizing: border-box;
 
-  &:after, &:before {
+  &:after,
+  &:before {
     box-sizing: border-box;
   }
 
   * {
     box-sizing: border-box;
 
-    &:after, &:before {
+    &:after,
+    &:before {
       box-sizing: border-box;
     }
   }
 
-  + label.check-label {
+  +label.check-label {
     box-sizing: border-box;
-    font-size: 0.875rem;
+    margin-right: 0.5rem;
+
   }
 
-  &::selection, &:after::selection, &:before::selection {
+  &::selection,
+  &:after::selection,
+  &:before::selection {
     background: none;
   }
 
   * {
-    &::selection, &:after::selection, &:before::selection {
+
+    &::selection,
+    &:after::selection,
+    &:before::selection {
       background: none;
     }
   }
 
-  + label.check-label {
+  +label.check-label.switch {
     &::selection {
       background: none;
     }
 
+    font-size: 0.875rem;
     outline: 0;
     display: block;
     margin-top: 5px;
@@ -44,7 +53,8 @@
     user-select: none;
     text-align: left;
 
-    &:after, &:before {
+    &:after,
+    &:before {
       position: relative;
       display: block;
       content: '';
@@ -62,16 +72,16 @@
   }
 
   &:checked {
-    + label.check-label:after {
+    +label.check-label.switch:after {
       left: 50%;
     }
 
-    + label.check-label {
+    +label.check-label.switch {
       background: $form-primary;
     }
   }
 
-  + label.check-label {
+  +label.check-label.switch {
     background: $grey;
     border-radius: 2em;
     padding: 2px;
@@ -84,7 +94,73 @@
     }
   }
 
-  &:disabled + label {
+  &:disabled+label.switch {
     opacity: 0.6 !important;
   }
+}
+
+
+//Style for box
+.check+label.check-label.box {
+  margin: 0;
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  background-color: #fff;
+  border: 2px solid $grey;
+  border-radius: 4px;
+  height: 20px;
+  width: 20px;
+  background: none;
+  cursor: pointer;
+}
+
+.check:checked+label.check-label.box {
+  border: 2px solid $brand-primary;
+  background-color: $brand-primary !important;
+  background: url('/assets/images/tick.png');
+  background-size: 11px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+//Style for radio
+.check+label.check-label.radio {
+  margin: 0;
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  background-color: #fff;
+  border: 2px solid $grey;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  background: none;
+  cursor: pointer;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 3px;
+    bottom: 3px;
+    border-radius: 50%;
+
+  }
+
+}
+
+.check:checked+label.check-label.radio {
+  border: 2px solid $brand-primary;
+
+  &:after {
+    background-color: $brand-primary !important;
+  }
+}
+
+.check[disabled]+label.check-label {
+  cursor: not-allowed;
+  opacity: 0.65;
 }
