@@ -1,3 +1,7 @@
+# [1.0.0-beta.9](https://git.e9ine.com/sharvilak/vue-form-plugin/compare/1.0.0-beta.8...1.0.0-beta.9) (2020-07-13)
+
+
+
 # [1.0.0-beta.8](https://git.e9ine.com/sharvilak/vue-form-plugin/compare/1.0.0-beta.6...1.0.0-beta.8) (2020-05-31)
 
 
