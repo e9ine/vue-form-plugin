@@ -139,8 +139,8 @@ input[type="number"] {
 	.form-control-static {
 		font-weight: $font-weight-medium;
 		font-size: 1rem;
-		min-height: 40px;
-		line-height: 40px;
+		min-height: inherit;
+		line-height: 1.5rem;
 		margin-top: 0;
 		margin-bottom: 0;
 
