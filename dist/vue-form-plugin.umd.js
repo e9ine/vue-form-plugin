@@ -9834,7 +9834,7 @@
       attrs: {
         "options": _vm.items,
         "multiple": true,
-        "track-by": "_id",
+        "track-by": _vm.valueField || '_id',
         "label": _vm.displayField || 'Name',
         "close-on-select": true,
         "clear-on-select": true,
@@ -9893,7 +9893,7 @@
       attrs: {
         "options": _vm.items,
         "multiple": true,
-        "track-by": "_id",
+        "track-by": "valueField || '_id'",
         "label": _vm.displayField || 'Name',
         "close-on-select": true,
         "clear-on-select": true,
@@ -9929,8 +9929,8 @@
 
   var __vue_inject_styles__$2 = function __vue_inject_styles__(inject) {
     if (!inject) return;
-    inject("data-v-b981444e_0", {
-      source: ".profile[data-v-b981444e]{display:inline-block;margin-right:8px;border-radius:50%;height:30px;width:30px}",
+    inject("data-v-7d4e4e37_0", {
+      source: ".profile[data-v-7d4e4e37]{display:inline-block;margin-right:8px;border-radius:50%;height:30px;width:30px}",
       map: undefined,
       media: undefined
     });
@@ -9938,7 +9938,7 @@
   /* scoped */
 
 
-  var __vue_scope_id__$2 = "data-v-b981444e";
+  var __vue_scope_id__$2 = "data-v-7d4e4e37";
   /* module identifier */
 
   var __vue_module_identifier__$2 = undefined;
