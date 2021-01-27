@@ -6,7 +6,7 @@
         <label v-else class="control-label" :for="label || property.name" v-text="label || property.name" v-show="!hideLabel"></label>
         <div v-if="displayMode === 'EDIT' || displayMode === 'CREATE'" class="form-element">
             <div v-if="typeof items[0] === 'object'" class="multiple">
-                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @open="$emit('touched')" @close="handler" @remove="remove">
+                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" :track-by="valueField || '_id'" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @open="$emit('touched')" @close="handler" @remove="remove">
                     <template slot="option" slot-scope="props">
                         <div v-if="optionTemplate && optionTemplate.length > 0 && props && props.option">
                             <v-runtime-template :template="optionTemplate" :template-props="{ props }"></v-runtime-template>
@@ -26,7 +26,7 @@
                 </multiselect>
             </div>
             <div v-else-if="typeof items[0] === 'string'" class="multiple">
-                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @open="$emit('touched')" @close="handler" @remove="remove"></multiselect>
+                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" track-by="valueField || '_id'" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @open="$emit('touched')" @close="handler" @remove="remove"></multiselect>
             </div>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
