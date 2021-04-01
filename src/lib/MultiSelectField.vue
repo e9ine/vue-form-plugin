@@ -25,8 +25,12 @@
                     </template>
                 </multiselect>
             </div>
-            <div v-else-if="typeof items[0] === 'string'" class="multiple">
-                <multiselect v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" track-by="_id" :label="displayField || 'Name'" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @open="$emit('touched')" @close="handler" @remove="remove"></multiselect>
+            <div v-else-if="typeof items[0] === 'string' || typeof items[0] === 'number'" class="multiple">
+                <multiselect :taggable="false" v-model="selected" :options="items" :class="customClass" :style="customStyle" :multiple="true" :close-on-select="true" :clear-on-select="true" :preserve-search="false" select-label="" deselect-label="" :hide-selected="true" @open="$emit('touched')" @close="handler" @remove="remove">
+                    <template slot="option" slot-scope="props">
+                        <div>{{ props.option }}</div>
+                    </template>
+                </multiselect>
             </div>
         </div>
         <template v-if="$slots.view && displayMode === 'VIEW'">
