@@ -89,6 +89,9 @@ export const FieldMixin = {
         valueField: {
             type: String
         },
+        descriptionField: {
+            type: String
+        },
         fullObject: {
             type: Boolean
         },
