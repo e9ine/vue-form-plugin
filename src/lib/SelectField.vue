@@ -18,10 +18,10 @@
                             <img class="profile" v-if="showAvatar" :src="props.option[avatarProp]" :alt="props.option.Name" loading="lazy" />
                             <div class="description">
                                 <div class="title">
-                                    {{ props.option.Name }}
+                                    {{ props.option[displayField || 'Name'] }}
                                 </div>
-                                <small class="text-muted" v-if="props.option.Description">
-                                    {{ props.option.Description }}
+                                <small class="text-muted" v-if="props.option[descriptionField || 'Description']">
+                                    {{ props.option[descriptionField || 'Description'] }}
                                 </small>
                             </div>
                         </div>
@@ -60,7 +60,7 @@ export default {
     name: 'SelectField',
     props: {
         value: {
-            type: [String, Array, Object]
+            type: [Number, String, Array, Object]
         },
         label: {
             type: String
@@ -92,6 +92,9 @@ export default {
         filterArgs: {
             type: Array,
             default: () => []
+        },
+        descriptionField: {
+            type: String
         },
         displayField: {
             type: String
@@ -195,8 +198,10 @@ export default {
         if (this.selectFrom && this.selectFrom.length && typeof this.selectFrom[0] === 'object') {
             // check if any external objects exist in the list  via select from
             if (this.value) {
-                this.selected = this.selectFrom.find(item => item[this.valueField || '_id'] === this.value);
+                if (this.fullObject) this.selected = this.selectFrom.find(item => item[this.valueField || '_id'] === this.value[this.valueField || '_id']);
+                else this.selected = this.selectFrom.find(item => item[this.valueField || '_id'] === this.value);
             } else if (this.property?.value) {
+                if (this.fullObject) this.selected = this.selectFrom.find(item => item === this.property.value[this.valueField || '_id']);
                 this.selected = this.selectFrom.find(item => item[this.valueField || '_id'] === this.property.value);
             } else {
                 this.selected = undefined;
